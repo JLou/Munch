@@ -111,7 +111,13 @@ class Db
       $idd = $query->fetch();
 
   }
-
+  
+  public function getSpecials()
+  {
+    $query = $this->_pdo->prepare('SELECT s.date, s.description, s.title, r.location, r.address, r.tel, r.name, r.id FROM specials s LEFT JOIN restaurants r ON s.restaurant_id=r.id WHERE s.date=:date');
+    return $query;
+  }
+  
   public static function getInstance()
   {
     if( self::$_instance == null)

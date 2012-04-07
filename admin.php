@@ -65,7 +65,6 @@ if (isset($_SESSION['id']))
       include('bottom.php');
     }
   }
-}
 else
   {
     header('Location: index.php');
