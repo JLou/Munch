@@ -2,7 +2,6 @@
 //Everything is checked, registration is done!!!
 include('head.php');
 include('Db.php');
-//include ('user.php');
 function mailTaken($db, $email)
 {
   $query = $db->query('SELECT email FROM users');

@@ -5,7 +5,6 @@
 //THE LOGIN FAILED, THEN WE TELL THE USER
 session_start();
 include('Db.php');
-include('user.php');
 
 //Check user's password, return id
 function findUser($db, $mail, $passwd)
@@ -33,11 +32,6 @@ if (isset($_GET['log']) && !isset($_SESSION['id'])) //session not created
 	if($id != -1)
 	  {
 	    $_SESSION['id'] = $id;
-	    if (isAdmin($id))
-	      {
-		$_SESSION['admin'] = true;
-		echo 'you are admin';
-	      }
 	  }
 	else 
 	  {

@@ -11,6 +11,38 @@ class Db
     $this->_pdo = new PDO('mysql:host=localhost;dbname=' . $dbname, $user, $pass, $pdo_options);
   }
 
+  public function isAdmin($id)
+  {
+    try
+      {
+	$query = $this->_pdo->prepare('SELECT id, admin FROM users WHERE id = ?');
+	$query->execute(array($id));
+	$user = $query->fetch();
+	
+	return $user['admin'];
+      }
+    catch(Exception $e)
+      {
+	die('Error: ' + $e->getMessage());
+      }
+  }
+
+  public function isrestau($id)
+  {
+    try
+      {
+	$query = $this->_pdo->prepare('SELECT id, checked FROM restaurants WHERE id = ?');
+	$query->execute(array($id));
+	$user = $query->fetch();
+	
+	return $user['checked'];
+      }
+    catch(Exception $e)
+      {
+	die('Error: ' + $e->getMessage());
+      }
+  }
+  
   public function getUser($id)
   {
     $query = $this->_pdo->prepare('SELECT id, admin FROM users WHERE id = ?');
