@@ -70,7 +70,17 @@ class Db
 		    );
   }
 
-
+  public function addSpecial($post, $restid)
+  {
+    list($day, $month, $year) = split('[/]', strip_tags($post['date']));
+    $query = $this->_pdo->prepare('INSERT INTO specials(id, date, restaurant_id, description, title) VALUES(:id, :date, :restid, :desc, :title)');
+    $query->execute(array(':id' => '',
+			  ':date' => $year . '/' . $month . '/' . $day,
+			  ':title' => strip_tags($post['title']),
+			  ':desc' => strip_tags($post['description']),
+			  ':restid' => $restid));
+  }
+  
   public function query($query)
   {
     return $this->_pdo->query($query);
