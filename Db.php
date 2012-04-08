@@ -117,7 +117,30 @@ class Db
     $query = $this->_pdo->prepare('SELECT s.date, s.description, s.title, r.location, r.address, r.tel, r.name, r.id FROM specials s LEFT JOIN restaurants r ON s.restaurant_id=r.id WHERE s.date=:date');
     return $query;
   }
+
+  public function getRestaurantSpecials()
+  {
+    $query = $this->_pdo->prepare('SELECT s.id, s.date, s.title FROM specials s WHERE s.restaurant_id=:id AND s.date > :date');
+    return $query;
+  }
   
+  public function getSpecial($id)
+  {
+    $query = $this->_pdo->prepare('SELECT * FROM specials WHERE id=:id');
+    $query->execute(array('id' => $id));
+    return $query->fetch();
+  }
+
+  public function updateSpecial($id, $post)
+  {
+    $query = $this->_pdo->prepare('UPDATE specials SET title=:title, date=:date, description=:desc WHERE id=:id');
+    $query->execute(array('id' => $id,
+			  'title' => $post['title'],
+			  'date' => $post['date'],
+			  'desc' => $post['description']));
+			  
+  }
+
   public static function getInstance()
   {
     if( self::$_instance == null)

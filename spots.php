@@ -25,6 +25,15 @@ try
 	    {?>
 	      <a href="restaurant_edit.php">Edit restaurant page</a>
 	    <?php
+	      //List of specials added
+	      $query = $db->getRestaurantSpecials();
+	      $query->execute(array('id' => $_SESSION['id'],
+				    'date' => date("Y-m-d")));
+	      
+	      while ($data = $query->fetch())
+		{
+		  echo '<p>' . $data['title'] . ' on ' . $data['date'] . " <a href='specialupdate.php?id=" . $data['id'] . "'>Edit</a></p>";
+		}
 	    }
 	}
     }
