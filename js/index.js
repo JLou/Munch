@@ -150,9 +150,18 @@
     });*/
 
     //SLIDE DOWN FOR THE FORMS
+    var slide = false;
+    var slidelogin = false;
     $("#registerform").hide();
+    $("#registercontainer .formcontainer").css("border", "none");
     $("#buttonregister").click(function() 
 			       {
+				   if (!slide) //SlideDown
+				       $("#registercontainer .formcontainer").css("border", "solid 10px rgb(251, 186, 44)");
+				   else //SLideup
+				   {
+				       $("#registercontainer .formcontainer").animate({borderWidth: "0px"}, 400);
+				   }
 				   $("#registerform").slideToggle("200");
 				   $("#logincontainer").toggle("200");	
 	
@@ -161,8 +170,15 @@
 
     
     $("#loginform").hide();
+    $("#logincontainer .formcontainer").css("border", "none");
     $("#buttonloginform").click(function() 
 			       {
+				   if (!slidelogin) //SlideDown
+				       $("#logincontainer .formcontainer").css("border", "solid 10px rgb(251, 186, 44)");
+				   else //SLideup
+				   {
+				       $("#logincontainer .formcontainer").animate({borderWidth: "0px"}, 400);
+				   }
 				   $("#loginform").slideToggle("200");
 				   $("#registercontainer").toggle("200");
 				   

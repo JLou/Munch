@@ -1,9 +1,3 @@
-/* 
------------------------- INDEX PAGE & BASIC STUFF -------------------
------------------------- INDEX PAGE & BASIC STUFF -------------------
------------------------- INDEX PAGE & BASIC STUFF -------------------
------------------------- INDEX PAGE & BASIC STUFF -------------------
-*/
 article, aside, details, figcaption, figure,  
 footer, header, hgroup, menu, nav, section 
 {  
@@ -30,344 +24,117 @@ footer, header, hgroup, menu, nav, section
 {
     cursor: pointer;
 }
-*
-{
-    padding: 0;  
-    margin: 0;
-    margin: auto;
-    font-family: euphemia;
-}
 html
 {
-    background-color: rgb(253, 199, 0);
-    background: -moz-linear-gradient(top, rgb(255, 192, 0), rgb(255, 226, 0));
-    background: -webkit-gradient(linear, left center, right center, from(rgb(253, 199, 0)), to(rgb(255, 226, 0)));
+    background-color: #ffea01;
     overflow-y: scroll;
 }
 body
 {
-    width: 1280px;
-    border-left: solid 1px rgb(253, 231, 80);
-    border-right: solid 1px white;
+	
 }
-header
+header#banner
 {
-    height: 127px;
-    background: url("images/banner.png");
-    background-repeat: no-repeat;1
+	width:959px;
+	height:127px;
+	background:url('images/banner.png') no-repeat transparent;
 }
-#content
+
+header#banner ul 
 {
-    width: 1000px;
-    min-height: 400px;
+	margin:0 0 0 700px;
 }
-#content p, #content a
+header#banner ul li
 {
-    color: rgb(250, 115, 25);
-    margin: 0 30px 0 30px;
+	float:left;
+	height:31px;
+	padding-top:48px;
+	padding-left:3px;
 }
-#content h2, #content h1
+#wrapper
 {
-    color: rgb(208, 88, 7);
-    font-family: Arial;
+	width:90%;
+	margin:auto;
 }
-.right
+nav#topnav
 {
-    text-align: right;
+	margin: 3% 0 0 50%;
 }
-.correct
+nav#topnav li
 {
-    font-family: euphemia, serif;
-    color: green;
+	float:left;
+	position:relative;
 }
-.incorrect
+nav#topnav a
 {
-    font-family: euphemia, serif;
-    color: red;
+	font-family:Verdana;
+	color:inherit;
+	text-decoration:none;
+	color:#fff;
+	display:block;
+	height:100%;
+	text-align:center;
+	
+	text-transform:lowercase;
 }
-#talkbubble p{
-    width: 100%;
-    margin-left: -0.5px;
-    font-size: 13px;
-}
-#talkbubble {
-    float: right;
-    text-align: left;
-    width: 170px; 
-    height: 80px; 
-    background: white;
-    position: relative;
-    -moz-border-radius:    10px; 
-    -webkit-border-radius: 10px; 
-    border-radius:         10px;
-    border: solid 6px blue;
-    top: -55px;
-}
-#talkbubble:before {
-    content:"";
-    position: absolute;
-    right: 100%;
-    top: 26px;
-    width: 0;
-    height: 0;
-    border-top: 13px solid transparent;
-    border-right: 26px solid blue;
-    border-bottom: 13px solid transparent;
-}
-#submit
+
+nav#topnav li.home
 {
-    border: solid 2px blue;
-    background-color: blue;
-    cursor: pointer;
+	width:90px;
+	height:48px;
+	line-height:48px;
+	background:url(images/homebutton.png);
+	z-index:115;
 }
-form input
+nav#topnav li.about
 {
-    font-family: Arial, serif;
+	background:url(images/aboutbutton.png) no-repeat center center;
+	width:106px;
+	height:40px;
+	line-height:40px;
+	margin:4px 0 4px -15px;
+	z-index:114;
 }
-form td
+nav#topnav li.profile
 {
-    height: 15px;
+	width:123px;
+	height:52px;
+	background:url(images/profilebutton.png);
+	z-index:113;
+	line-height:52px;
+	margin:-9px 0 0 -15px;
 }
-form .first 
+nav#topnav li.leave
 {
-    width: 10px;
+	background:url(images/aboutbutton.png) no-repeat center center;
+	width:106px;
+	height:40px;
+	line-height:40px;
+	margin:4px 0 4px -25px;
+	z-index:112;
 }
-form input[type=text], form input[type=password], form input[type=email], form input[type=date]
-{
-    width: 300px;
-    border-radius: 5px 5px 5px 5px;
-}
-form tr
-{
-    height: 40px;
-}
-form .third
-{
-    width: 150px;
-    padding-left: 10px;
-}
-p
-{
-    font-size: 0.8em;
-}
-#registercontainer, #logincontainer 
-{
-    text-align: center; /*Just for the button*/
-}
-#registercontainer .title, #logincontainer .title
-{
-    cursor: pointer;
-    height: 75px;
-    width: 250px;
-    border: solid 2px green;
-    border: none;
-    color: white;
-    font-size: 1.2em;
-    text-align: center;
-    position: relative;
-    top: 20px;
-    font-size: 1.8em;
-}
-#buttonregister
-{
-    background: url("images/register.png");
-    background-position: 0px 0px;
-}
-#buttonloginform
-{
-    background: url("images/login.png");
-    background-position: 0px 5px;
-}
-#registercontainer .formcontainer, #logincontainer .formcontainer
-{
-    text-align: left;
-    border: solid 10px rgb(251, 186, 44);
-    border-radius: 5px 5px 5px 5px;
-    color: rgb(254, 78, 2);
-    background-color: rgb(254, 201, 85);
-}
-#registercontainer form, #logincontainer form
-{
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-#headform
-{
-    height: 120px;
-    margin-left: 20px;
-}
-#headform span  
-{
-    margin-left: 120px;
-}
-#registercontainer
-{
-    margin-top: 20px;
-    margin-bottom: 0px;
-}
-#last
-{
-    height: 150px;
-}
-#last .first
-{
-    border: solid 2px blue;
-    width: 65px;
-}
-#last .third
-{
-    border: solid 2px green;
-    width: 170px;
-}
-footer a
-{
-    color: white;
-    font-size: 0.9em;
-    text-decoration: none;
-}
-a:hover
-{
-    color: rgb(250, 115, 25);
-}
-footer li, header li
-{
-    display: inline;
-    list-style-type: none;
-    margin-top: 10px;
-    padding-left: 15px;
-    padding-right: 0px;
-    margin: 10px;
-}
-header li
-{
-    padding: 0;
-    margin: 0;
-}
-header ul
-{
-    float: right;
-    margin-top: 35px;
-    margin-right: 270px;
-}
-footer ul
-{
-    width: 700px;
-    border-top: solid 2px rgb(253, 235, 51);
-    text-align: center;
-    padding-top: 15px;
-    padding-bottom: 15px;
-}
-footer .border
-{
-    border-left: solid 1px white;
-}
-/* 
------------------------- HOME PAGE -------------------
------------------------- HOME PAGE -------------------
------------------------- HOME PAGE -------------------
------------------------- HOME PAGE -------------------
------------------------- HOME PAGE -------------------
------------------------- HOME PAGE -------------------
-*/
+
 #slider
 {
-    
+	position:relative;
+	width:939px;
+	height:264px;
+	background:url("images/slider.png");
+	margin:auto;
+	margin-top:-25px;
+	z-index:100;
 }
-#buttonscontent
+img#a
 {
-    float: left;
-    margin-left: 60px;
+	display:none;
 }
-#adcontent
+#slider + img#a
 {
-    float: left;
-    margin-left: 40px;
+	display:block;
+	margin:auto;
+	position:relative;
+	width:939px;
+	height:264px;
+	top:-264px;
+	z-index:50;
 }
-#slider 
-{
-    width: 962px;
-}
-#slidertop ul
-{
-    margin-left: 650px;
-}
-#slidertop button
-{   
-    cursor: pointer;
-    border: none;
-    float: left;
-}
-#slidertop #buttonhome
-{
-    width: 100px;
-    height: 59px;
-    background: url('images/homebutton.png');
-    position: relative;
-    top: 50px;
-    right:190px;
-}
-#slidertop #buttonabout
-{
-    width: 116px;
-    height: 49px;
-    background: url('images/aboutbutton.png');
-    position: relative;
-    top: 60px;
-}
-#slidertop #buttonprofile
-{
-    width: 123px;
-    height: 52px;
-    background: url('images/profilebutton.png');
-    position: relative;
-    top: 53px;
-    left: 210px;
-}
-li
-{
-    list-style-type: none;
-}
-#bargains a, #week a, #advertise a, #specials a, #spots a, #contact a
-{
-    float: left;
-}
-
-ol#controls{
-    /*margin:1em 0;*/
-    padding:0;
-    height:20px;
-    margin-left: 350px;
-    }
-ol#controls li{
-    margin:0 0 0 0; 
-    padding:0;
-    display: inline;
-    height:20px;
-    }
-ol#controls li a{
-    float:left;
-    height:20px;
-    line-height:28px;
-/*    border:1px solid #ccc;*/
-    background: url('images/buttonslider.png');
-    color:#555;
-    padding:0 10px;
-    text-decoration:none;
-    }
-ol#controls li.current a{
-    background:url('images/buttonslider2.png');
-    color:#fff;
-    }
-ol#controls
-{
-    position: relative;
-    bottom: 80px;
-}
-
-ol#controls li a:focus, #prevBtn a:focus, #nextBtn a:focus{outline:none;}
-/* ABOUT PAGE */
-#about
-{
-    margin-top: 40px;
-}
-
