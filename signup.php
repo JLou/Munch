@@ -69,9 +69,9 @@ try
 {
   $db = Db::getInstance();
   
-  if(isset($_POST['restaurant']) && checktel() && isset($_POST['address'])) //If restaurant registration
+  if(isset($_POST['restaurant'])) //If restaurant registration
 	{
-	    if (issetpost() && checkEmail($db) && checkPass() && checkbirth())
+	    if (issetpost() && checktel() && isset($_POST['address']) && checkEmail($db) && checkPass() && checkbirth())
 	      {
 		$id = addUser($db);
 		$query = $db->prepare('INSERT INTO restaurants(id, name, location, description, checked, tel, address) VALUES(:id, :name, :location, :description, :checked, :tel, :address)');
@@ -82,11 +82,24 @@ try
 				      'checked' => false,
 				      'tel' => strip_tags($_POST['tel']),
 				      'address' => strtolower(strip_tags($_POST['address']))));
-		echo 'OK RESTAU';
+		echo "<p>Your retaurant account has been created, now you have to wait for the confirmation of our administration. Please send a mail to rick@letsmunch.ac.za to confirm you're a restaurant. We will also call you. This is only to prevent fake accounts. When your account will be confirmed, you'll have the possibility to add specials and update your restaurant profile page</p>
+		<p>Thank you for using munch</p>
+		<p>The munch team</p>";
 	      }
 	    else
-	      {
-		echo 'Wrong form RESTAURANT';
+	      {?>
+		<h4>Wrong form</h4>
+		  <p>You filled in a wrong form. Please make sure that you have:
+		<ul>
+		  <li>Filled every fields</li>
+		  <li>Written a valid date, format: DD/MM/YYYY</li>
+		  <li>Writte a valid email</li>
+		  <li>Chosen a password with at least one letter and one digit</li>
+		  <li>Your password re-type matches the first password</li>
+		  <li>Entered a valid telephone number</li>
+		</ul>
+		  </p>
+ 	      <?php
 	      }
 	}
   else //USER REGISTRATION
