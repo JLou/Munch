@@ -1,18 +1,21 @@
 <?php
 session_start();
-include('head.php');
 include('Db.php');
 if (isset($_SESSION['id']))
   {
-    echo '<p> Today\'s specials: </p>';
-    $db = Db::getInstance();
-    $query = $db->getSpecials();
-    $query->execute(array(':date' => date("Y-m-d")));;
-    while ($data = $query->fetch())
+    include('head.php');
+    if (!isset($_GET['day']))
       {
-	echo '<h1>' . $data['title'] . '</h1>';
-	echo '<p>' . $data['description'] . '</p>';
-	echo "<p> Posted by " . "<a href='spots.php?id=" . $data['id'] . "'>" . $data['name'] . '</a> in ' . $data['location'] . '</p>';
+	echo '<p> Today\'s specials: </p>';
+	$db = Db::getInstance();
+	$db->getSpecials(date("Y-m-d"));
+      }
+    else
+      {
+	$daysahead = time() + ($_GET['day'] * 24 * 60 * 60);
+	$db = Db::getInstance();
+	echo '<p> Specials on ' . date("Y-m-d", $daysahead) . ':</p>';
+	$db->getSpecials(date("Y-m-d", $daysahead));
       }
   }
 else
