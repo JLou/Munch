@@ -41,12 +41,12 @@ a:hover
 }
 html
 {
-    
-	background:url(images/b.jpg) repeat #ffea01;
+    background:#ff960d;
     overflow-y: scroll;
 }
 body
 {
+	background:url(images/b.jpg) repeat #ffea01;
 	position:relative;
 	z-index:-100;
 	color:#fff;
@@ -150,6 +150,7 @@ nav#topnav li.leave
 	background:url("images/slider.png") no-repeat;
 	margin:auto;
 	margin-top:-25px;
+	padding-top:25px
 }
 img#a
 {
@@ -157,12 +158,13 @@ img#a
 }
 #slider img#a:first-child
 {
-	display:block;
+	display:inline;
 	margin:auto;
 	position:relative;
 	width:939px;
 	height:264px;
 	z-index:-1;
+	margin-top:-25px;
 }
 
 #slider nav#slidernav ul{
@@ -251,5 +253,6 @@ footer a
 {
 	color:#fff552;
 }
+
 
 

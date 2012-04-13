@@ -1,27 +1,23 @@
-  </div> <!-- Content -->
-  <footer id="footer">
-    <ul>
-      <li><a href="#">Advertise</a></li>
-      <li class="border"><a href="aboutmunch.php">About us</a></li>      
-      <?php
-      if(isset($_SESSION['id']))
-	{
-	  echo '<li class="border"><a href="home.php">Home</a></li>';      
-	  if (isset($_SESSION['admin']))
-	    {
-	      echo '<li class="border"><a href="admin.php">Admin</a></li>';      
-	    }
-	}
-      else
-	{
-	  echo '<li class="border"><a href="index.php">Register</a></li>';      
-	}
-  
-      ?>     
-      <li class="border"><a href="#">Contact us</a></li>
-      <li class="border"><a href="#">Privacy Policy</a></li>
-      <li class="border"><a href="#">Sitemap</a></li>
-    </ul>
-  </footer>
-  </body>
+  </div> <!-- /Wrapper -->
+	<footer>
+		<p>
+			Copyright &copy; Munch 2012
+		</p>
+		<p>
+			<a href="#">Advertise</a> - 
+			<a href="aboutmunch.php">About us</a> - 
+					   <?php if(isset($_SESSION['id'])): ?>
+					   <a href="home.php">Home</a> -
+					   <?php if (isset($_SESSION['admin'])): ?>
+					   <a href="admin.php">Admin</a> -
+					   <?php endif; ?>
+					   <?php else: ?>
+					   <a href="index.php">Register</a> -
+					   <?php endif; ?>
+		       <a href="#">Contact</a> -
+		       <a href="#">Privacy Policy</a> -
+                       <a href="#">Sitemap</a>
+		</p>
+	</footer>
+</body>
 </html>
