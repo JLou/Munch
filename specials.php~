@@ -1,0 +1,19 @@
+<?php
+session_start();
+include('head.php');
+include('Db.php');
+
+if (isset($_SESSION['id']))
+  {
+    $db = Db::getInstance();
+    $query = $db->getSpecials();
+    while ($data = $query->fetch())
+      {
+	echo '<h1> . $data['title'] . </h1>';
+      }
+  }
+else
+  {
+    header('Location: index.php');
+  }
+?>

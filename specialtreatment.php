@@ -12,8 +12,15 @@ if (!isset($_GET['id']))
     if (isset_form() && isset($_SESSION['id']) && $db->isrestau($_SESSION['id']))
       {
 	include('head.php');
-	$db->addSpecial($_POST, $_SESSION['id']);
-	echo '<p>Your special has been added, you will see it on the specials page. You can now update it on your profile page before the day of its publication.</p>';
+	if ($db->checkDate($_POST['date']))
+	  {
+	    $db->addSpecial($_POST, $_SESSION['id']);
+	    echo '<p>Your special has been added, you will see it on the specials page. You can now update it on your profile page before the day of its publication.</p>';
+	  }
+	else
+	  {
+	    echo '<p>You filled a wrong form, please make sure that you entered a valid date. (DD/MM/YYYY)</p>';
+	  }
       }
     else
       {
@@ -28,8 +35,15 @@ else
 	if ($special['restaurant_id'] == $_SESSION['id'])
 	  {
 	    include('head.php');
-	    $db->updateSpecial($_GET['id'], $_POST);
-	    echo '<p>Your special has updated</p>';
+	    if ($db->checkDate($_POST['date']))
+	      {
+		$db->updateSpecial($_GET['id'], $_POST);
+		echo '<p>Your special has been updated</p>';
+	      }
+	    else
+	      {
+		echo '<p>You filled a wrong form, please make sure that you entered a valid date. (DD/MM/YYYY)</p>';
+	      }
 	  }
       }
     else

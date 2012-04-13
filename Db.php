@@ -112,15 +112,21 @@ class Db
 
   }
   
-  public function getSpecials()
+  public function getSpecials($date)
   {
-    $query = $this->_pdo->prepare('SELECT s.date, s.description, s.title, r.location, r.address, r.tel, r.name, r.id FROM specials s LEFT JOIN restaurants r ON s.restaurant_id=r.id WHERE s.date=:date');
-    return $query;
+    $query = $this->_pdo->prepare('SELECT s.date, s.description, s.title, r.location, r.address, r.tel, r.name, r.id FROM specials s LEFT JOIN restaurants r ON s.restaurant_id=r.id WHERE s.date=:date ORDER BY id');
+    $query->execute(array(':date' => $date));;
+    while ($data = $query->fetch())
+      {
+	echo '<h1>' . $data['title'] . '</h1>';
+	echo '<p>' . $data['description'] . '</p>';
+	echo "<p> Posted by " . "<a href='spots.php?id=" . $data['id'] . "'>" . $data['name'] . '</a> in ' . $data['location'] . '</p>';
+      }
   }
 
   public function getRestaurantSpecials()
   {
-    $query = $this->_pdo->prepare('SELECT s.id, s.date, s.title FROM specials s WHERE s.restaurant_id=:id AND s.date > :date');
+    $query = $this->_pdo->prepare('SELECT s.id, s.date, s.title FROM specials s WHERE s.restaurant_id=:id AND s.date >= :date ORDER BY date');
     return $query;
   }
   
@@ -133,10 +139,11 @@ class Db
 
   public function updateSpecial($id, $post)
   {
+    list($day, $month, $year) = split('[/]', strip_tags($post['date']));
     $query = $this->_pdo->prepare('UPDATE specials SET title=:title, date=:date, description=:desc WHERE id=:id');
     $query->execute(array('id' => $id,
 			  'title' => $post['title'],
-			  'date' => $post['date'],
+			  'date' => $year . '/' . $month . '/' . $day,
 			  'desc' => $post['description']));
 			  
   }
@@ -148,5 +155,10 @@ class Db
 	 self::$_instance = new Db();
       }
     return self::$_instance; 
+  }
+  
+  public function checkDate($date)
+  {
+    return preg_match("#^(0[1-9]|[12][0-9]|3[01])[/](0[1-9]|1[012])[/](19|20)\d\d$#", strip_tags($date));
   }
 }

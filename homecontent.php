@@ -1,31 +1,21 @@
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/easySlider1.7.js"></script>
-<script type="text/javascript">
-  $(document).ready(function(){	
-  $("#slider").easySlider({
-  auto: true, 
-  continuous: true,
-  numeric: true
-  });
-  });	
-</script>
-<div id="slidertop">
-  <ul>
-    <li><button type="button" id="buttonprofile"></button></li>
-    <li><button type="button" id="buttonabout" onClick="window.location='aboutmunch.php'"></button></li>
-    <li><button type="button" id="buttonhome" onClick="window.location='home.php'"></button><li>
-  </ul>
+<div id="wrapper">
+  <nav id="topnav" class="clear">
+    <ul>
+      <li class="home"><a href="#" >Home</a></li>
+      <li class="about"><a href="#">About</a></li>
+      <li class="profile"><a href="#">Profile</a></li>
+      <li class="leave"><a href="#">Leave</a></li>
+    </ul>
+  </nav>
+  <div class="clear"></div>
+  <div id="slider">
+  </div>
+  <img id="a" src="images/slider2.png" />
+  <img id="a" src="images/slider2.png" />
+  <img id="a" src="images/slider3.png" />
+  <img id="a" src="images/slider4.png" />
 </div>
-<div id="slider">
-  <ul>
-    <li id="first"><img src="images/slider.png" /></li>
-    <li><img src="images/slider2.png" /></li>
-    <li><img src="images/slider3.png" /></li>
-    <li><img src="images/slider4.png" /></li>
-  </ul>
-  <div id="slider1prev"><a href="#"></a></div>
-  <div id="slider1next"><a href="#"></a></div>
-</div>
+
 <div id="buttonscontent">
 <section id="specials">
   <a href="#"><img src="images/home/specials.png" /></a>
