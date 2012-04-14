@@ -18,9 +18,12 @@ try
 	}
       else 
 	{
-	  echo '<h2>' . $restaurant['name'] . '</h2>';
-	  echo '<p>'. $restaurant['description'] . '</p>';
+	  echo '<section id="restaurant">';
+	  echo '<header><img src="images/mairiexp.png" /><h2>' . $restaurant['name'] . '</h2></header>';
+	  echo '<p class="clear">'. $restaurant['description'] . '</p>';
 	  echo '<p>'. $restaurant['address'] . '</p>';
+	  echo '</section>';
+	  echo '<section id="adminrest">';
 	  if ($_SESSION['id'] == $_GET['id'])
 	    {?>
 	      <a href="restaurant_edit.php">Edit restaurant page</a>
@@ -36,6 +39,7 @@ try
 		}
 	    }
 	}
+      echo '</section>';
     }
   else
     {

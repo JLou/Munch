@@ -1,4 +1,4 @@
-<?php include_once('Db.php');?>
+<?php include('Db.php');?>
 		<div id="wrapper">		
 			<nav id="topnav" class="clear">
 				<ul>
@@ -6,12 +6,8 @@
 					<li class="about">	<a href="aboutmunch.php" >About</a></li>			
 		   <?php 
 		   $db = Db::getInstance();
-if(isset($_SESSION['id']) && $db->isrestau($_SESSION['id']))
-  {
-    echo '<li class="profile"><a href="spots.php?id=' . $_SESSION['id'] .'">Profile</a></li>';	
-  }?>
-  
-					<li class="leave">	<a href="index.php?logout=true">Leave</a></li>						 
+if(isset($_SESSION['id']) && isrestau($_SESSI <li class="profile"><a href="#">Profile</a></li>			
+					<li class="leave">	<a href="#">Leave</a></li>						 
 				</ul>
 			</nav>
 			<div class="clear"></div>

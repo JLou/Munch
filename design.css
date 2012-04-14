@@ -50,6 +50,7 @@ body
 	position:relative;
 	z-index:-100;
 	color:#fff;
+	min-width: 963px;
 }
 header#banner
 {
@@ -74,14 +75,13 @@ header#banner ul li
 {
 	position:relative;
 	z-index:-50;
-	width:80%;
+	width:90%;
 	margin:auto;
 	background-color: #ffea00;
 	border:2px solid #ffff50;
 	outline:1px dashed #fff;
 	margin-top:2%;
 	overflow:hidden;
-	padding: 0 5%;
 	box-shadow: 0 0 18px -3px #000;
 }
 nav#topnav
@@ -145,7 +145,7 @@ nav#topnav li.leave
 #slider
 {
 	position:relative;
-	width:939px;
+	width:850px;
 	/*height:264px;*/
 	background:url("images/slider.png") no-repeat;
 	margin:auto;
@@ -161,8 +161,8 @@ img#a
 	display:inline;
 	margin:auto;
 	position:relative;
-	width:939px;
-	height:264px;
+	width:850px;
+	height:250px;
 	z-index:-1;
 	margin-top:-25px;
 }
@@ -254,5 +254,191 @@ footer a
 	color:#fff552;
 }
 
+#homeforms form
+{
+    padding-top: 70px;
+    margin: auto;
+    border: 10px solid #FBBA2C;
+    background:#fec955;
+    color:#ff4e00;
+    width:75%;
+}
+#homeforms .hidden
+{
+    border: none;
+    background: transparent;
+}
+#homeforms h2
+{
+    margin: auto;
+    text-align: center;
+    font-size: 30px;
+    width: 250px;
+    height: 70px;
+    line-height: 70px;
+    position: relative;
+    top: 40px;
+    display: block;
+    color:#fff;
+}
+#homeforms
+{
+    padding:2% 5%;
+}
+#homeforms section
+{
+    margin: 0 auto 4% auto; 
+}
+#homeforms table
+{
+    margin: 0 auto 4% auto;
+}
+#homeforms input
+{
+    background:#f3eded;
+    border:1px solid #b7b7b7;
+    border-radius:5px;
+}
+#homeforms input.button {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:1.1em;
+	color: #ffffff;
+	padding: 5px 20px;
+	background: -moz-linear-gradient(
+		top,
+		#f77300 0%,
+		#ffd34f);
+	background: -webkit-gradient(
+		linear, left top, left bottom, 
+		from(#f77300),
+		to(#ffd34f));
+	border-radius: 11px;
+	-moz-border-radius: 11px;
+	-webkit-border-radius: 11px;
+	border: 1px solid #ffb700;
+	-moz-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 3px rgba(255,255,255,1);
+	-webkit-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 3px rgba(255,255,255,1);
+	text-shadow:
+		0px -1px 0px rgba(000,000,000,0.2),
+		0px 1px 0px rgba(255,255,255,1);
 
-
+}
+#homeforms input.button:hover {
+   border-top-color: #ff920d;
+   background: #ff920d;
+   color: #ffffff;
+}
+#homeforms input.button:active {
+   border-top-color: #ffbf00;
+   background: #ffbf00;
+}
+#registercontainer h2
+{
+    background:url("images/register.png") no-repeat;
+}
+#logincontainer h2
+{
+    background: url("images/login.png") no-repeat;
+}
+#homeforms td
+{
+    height: 30px;
+}
+#loginform, #registerform
+{
+    margin-top: 0;
+}
+.special
+{
+    font-family: euphemia;
+    margin: auto;
+    width: 50%;
+    border: solid 10px #FBBA2C;
+    border-top: none;
+    border-radius: 5px;
+    margin-top: 3%;
+    background: #FECA1E;
+}
+.special header h2
+{
+    font-size: 30px;
+    font-family: "Times new roman", serif;
+    text-shadow: 1px 1px 1px #ffe674;
+    font-weight: bold;
+    text-align: center;
+    color: #fe6813;
+}
+.special header
+{
+    padding: 10px 20px 10px 20px;
+    background: #FBBA2C;
+    width: 110%;
+    margin: 0 0 0 -8%;
+    border: solid 5px #f8a900;
+    border-radius: 5px;
+}
+.special header p
+{
+    text-align: center;
+    text-indent: 40px;
+    padding-top: 5px;
+}
+.special .description
+{
+    padding: 25px;
+    background:#FECA1E;
+    color: #fff;
+    line-height: 120%;
+}
+.special header a
+{
+    text-decoration: none;
+}
+.special header a:hover
+{
+    color: #ffe674;
+}
+.special h3
+{
+    font-family: "Times new roman", serif;
+    text-shadow: 1px 1px 1px #ffe674;
+    font-weight: bold;
+    color: #fe6813;
+    font-size: 25px;
+    background:#FECA1E;
+    text-indent: 80px;
+}
+.special hr
+{
+    color: orange;
+    background-color: orange;
+    height: 1px;
+    border: 0;
+    width: 80%;
+    border-bottom: 1px solid #ffe241;
+}
+#restaurant
+{
+    width: 50%;
+    margin: auto;
+    margin-top: 5%;
+}
+#restaurant header h2
+{
+    padding-left: 200px;
+    line-height: 128px;
+    font-size: 30px;
+}
+#restaurant header img
+{
+    float:left;
+    border: solid 3px white;
+}
+#adminrest 
+{
+    margin: auto;
+}

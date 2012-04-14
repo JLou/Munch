@@ -1,4 +1,4 @@
-  </div> <!-- /Wrapper -->
+</div> <!-- /Wrapper -->
 	<footer>
 		<p>
 			Copyright &copy; Munch 2012

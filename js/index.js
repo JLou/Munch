@@ -153,35 +153,37 @@
     var slide = false;
     var slidelogin = false;
     $("#registerform").hide();
-    $("#registercontainer .formcontainer").css("border", "none");
-    $("#buttonregister").click(function() 
+    $("#homeforms h2").addClass("pointer");
+    $("#registerform, #loginform").addClass("hidden");
+    $("#registercontainer h2").click(function() 
 			       {
-				   if (!slide) //SlideDown
-				       $("#registercontainer .formcontainer").css("border", "solid 10px rgb(251, 186, 44)");
-				   else //SLideup
+				   
+				   if (slide)
 				   {
-				       $("#registercontainer .formcontainer").animate({borderWidth: "0px"}, 400);
+				       $("#registerform").slideToggle("200", function(){$("#registerform").toggleClass("hidden");});
+				   } 
+				   else
+				   {
+				       $("#registerform").toggleClass("hidden");
+				       $("#registerform").slideToggle("200");
 				   }
-				   $("#registerform").slideToggle("200");
-				   $("#logincontainer").toggle("200");	
+				   //$("#logincontainer").toggle("200");	
 	
 				   slide = !slide;
 			       });
 
     
     $("#loginform").hide();
-    $("#logincontainer .formcontainer").css("border", "none");
-    $("#buttonloginform").click(function() 
+    $("#logincontainer h2").click(function() 
 			       {
-				   if (!slidelogin) //SlideDown
-				       $("#logincontainer .formcontainer").css("border", "solid 10px rgb(251, 186, 44)");
-				   else //SLideup
+				   if (slidelogin)
+			      	       $("#loginform").slideToggle("200", function(){$("#loginform").toggleClass("hidden");});
+				   else
 				   {
-				       $("#logincontainer .formcontainer").animate({borderWidth: "0px"}, 400);
+				       $("#loginform").toggleClass("hidden");
+				       $("#loginform").slideToggle("200");
 				   }
-				   $("#loginform").slideToggle("200");
-				   $("#registercontainer").toggle("200");
-				   
+				  				   
 				   slidelogin = !slidelogin;
 			       });
     

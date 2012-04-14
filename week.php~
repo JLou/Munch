@@ -1,0 +1,10 @@
+<?php
+include('Db.php');
+if (isset($_SESSION['id']))
+  {
+    $today = date("w"); //0 == Sunday, 1=Monday..etc
+  }
+else
+  {
+    header('Location: index.php');
+  }

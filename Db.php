@@ -118,9 +118,10 @@ class Db
     $query->execute(array(':date' => $date));;
     while ($data = $query->fetch())
       {
-	echo '<h1>' . $data['title'] . '</h1>';
-	echo '<p>' . $data['description'] . '</p>';
-	echo "<p> Posted by " . "<a href='spots.php?id=" . $data['id'] . "'>" . $data['name'] . '</a> in ' . $data['location'] . '</p>';
+	echo '<section class="special">';
+	echo '<header><h2>' . $data['title'] . "</h2><p>at <a href='spots.php?id=" . $data['id'] . "'>" . $data['name'] . '</a>, ' . $data['location'] . '</p></header>';
+	echo '<p class="description">' . $data['description'] . '</p>';
+	echo '</section>';
       }
   }
 

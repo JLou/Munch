@@ -6,7 +6,6 @@ if (isset($_SESSION['id']))
     include('head.php');
     if (!isset($_GET['day']))
       {
-	echo '<p> Today\'s specials: </p>';
 	$db = Db::getInstance();
 	$db->getSpecials(date("Y-m-d"));
       }
@@ -22,4 +21,5 @@ else
   {
     header('Location: index.php');
   }
+include('bottom.php');
 ?>
