@@ -33,7 +33,7 @@ a
 }
 a:hover
 {
-	color:#fff8cd;
+	color:#ff2500;
 }
 ::selection
 {
@@ -146,7 +146,7 @@ nav#topnav li.leave
 {
 	position:relative;
 	width:850px;
-	/*height:264px;*/
+	height:264px;
 	background:url("images/slider.png") no-repeat;
 	margin:auto;
 	margin-top:-25px;
@@ -156,17 +156,30 @@ img#a
 {
 	display:none;
 }
-#slider img#a:first-child
+#slider img#a.current
 {
-	display:inline;
-	margin:auto;
-	position:relative;
-	width:850px;
-	height:250px;
-	z-index:-1;
-	margin-top:-25px;
+    display:inline;
 }
-
+#slider img#a
+{
+    display:none;
+    margin:auto;
+    position:absolute;
+    width:850px;
+    height:250px;
+    z-index:-5;
+    top:0;
+    left:0;
+}
+#slider img.next
+{
+    display: none;
+    z-index:-2;
+}
+#slider nav
+{
+    margin-top:225px;
+}
 #slider nav#slidernav ul{
   border-width:1px 0;
   list-style:none;
@@ -179,22 +192,21 @@ img#a
 }
 #slider nav#slidernav ul li{
 	display:inline-block;
-	
+	cursor:pointer;
 	width:50px;
 	height:61px;
 	line-height:61px;
 	text-align:center;
-}
-#slider nav#slidernav ul li a
-{
-	display:block;
-	text-decoration:none;
 	background:url("images/sliderbuton.png") no-repeat;
 	color:transparent!important;
 	color:#FFEA01;
 	text-indent:-9999px
 }
-
+#slider nav#slidernav ul li.current
+{
+    cursor:auto;
+    background:url("images/sliderbutton-inactive.png");
+}
 #specials
 {
 	display:table;
@@ -293,13 +305,22 @@ footer a
 {
     margin: 0 auto 4% auto;
 }
-#homeforms input
+input
 {
     background:#f3eded;
     border:1px solid #b7b7b7;
     border-radius:5px;
 }
-#homeforms input.button {
+textarea
+{
+    background:#f3eded;
+    border:1px solid #b7b7b7;
+    border-radius:5px;
+    width: 500px;
+    height: 200px;
+}
+input.button {
+    cursor: pointer;
     font-family: Arial, Helvetica, sans-serif;
     font-size:1.1em;
 	color: #ffffff;
@@ -327,12 +348,12 @@ footer a
 		0px 1px 0px rgba(255,255,255,1);
 
 }
-#homeforms input.button:hover {
+input.button:hover {
    border-top-color: #ff920d;
    background: #ff920d;
    color: #ffffff;
 }
-#homeforms input.button:active {
+input.button:active {
    border-top-color: #ffbf00;
    background: #ffbf00;
 }
@@ -421,24 +442,195 @@ footer a
     width: 80%;
     border-bottom: 1px solid #ffe241;
 }
-#restaurant
+section#restaurant
 {
+    color: #ff8500;
     width: 50%;
     margin: auto;
     margin-top: 5%;
 }
-#restaurant header h2
+section#restaurant header
 {
+    border-bottom: dotted 5px #ffd400;
+    padding-bottom: 15px;
+    overflow: hidden;
+}
+section#restaurant header h2
+{
+    color: #ff4e00;
+    font-family:euphemia;
     padding-left: 200px;
-    line-height: 128px;
     font-size: 30px;
 }
-#restaurant header img
+section#restaurant header ul
+{
+    margin-left: 200px;
+}
+section#restaurant header ul li
+{
+    padding-top: 10px;
+}
+section#restaurant header img
 {
     float:left;
     border: solid 3px white;
 }
+section#restaurant #description
+{
+    margin: 5% 0 0 10%;
+    line-height: 18px;
+    text-indent: 30px;
+}
+section#adminrest h3
+{
+    margin: 20px 0 10px 0;
+    text-decoration: underline;
+    font-size: 20px;
+    color: #ff8500;
+}
+section#adminrest
+{
+    margin-top: 5%;
+    text-align: center;
+    margin-bottom: 2%;
+    color: #ffa500;
+}
 #adminrest 
 {
     margin: auto;
+}
+#restaulist
+{
+    margin-top: 1000px;
+    margin: auto;
+    width: 30%;
+}
+#restaulist ol a
+{
+    text-decoration: none;    
+}
+#restaulist ol
+{
+    height: 40px;
+    line-height: 40px;
+    border-bottom: solid 2px orange;
+}
+#week
+{
+    width: 50%;
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    overflow: hidden;
+    border-radius: 5px;
+}
+#week li
+{
+    float: left;
+    border: solid 2px white;
+    border-width: 2px 1px;
+    width: 14%;
+    text-align: center;
+    height: 70px;
+    line-height: 70px;
+}
+#week li a
+{
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+#week .last
+{
+    border-radius: 0 5px 5px 0;
+    border-width: 2px 2px 2px 1px;
+}
+#week .first
+{
+    border-radius: 5px 0 0 5px;
+    border-width: 2px 1px 2px 2px;
+}
+#week .tuesday
+{
+    background: #ff1f00;
+}
+#week .monday
+{
+    background: #50c300;
+}
+#week .wednesday
+{
+    background:#ffe200;
+}
+#week .thursday
+{
+    background:#101576;
+}
+#week .friday
+{
+    background:#00e0c3;
+}
+#week .saturday
+{
+    background:#a02db5;
+}
+#week .sunday a
+{
+    background:#ff7400;
+    background-image: linear-gradient(bottom, rgb(255,151,66) 0%, rgb(240,84,0) 84%);
+    background-image: -o-linear-gradient(bottom, rgb(255,151,66) 0%, rgb(240,84,0) 84%);
+    background-image: -moz-linear-gradient(bottom, rgb(255,151,66) 0%, rgb(240,84,0) 84%);
+    background-image: -webkit-linear-gradient(bottom, rgb(255,151,66) 0%, rgb(240,84,0) 84%);
+    background-image: -ms-linear-gradient(bottom, rgb(255,151,66) 0%, rgb(240,84,0) 84%);
+    
+    background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0, rgb(255,151,66)),
+	color-stop(0.84, rgb(240,84,0))
+    );
+}
+
+#week .sunday a:hover
+{
+    background-image: linear-gradient(bottom, rgb(255,151,66) 100%, rgb(240,84,0) 0%);
+    background-image: -o-linear-gradient(bottom, rgb(255,151,66) 100%, rgb(240,84,0) 0%);
+    background-image: -moz-linear-gradient(bottom, rgb(255,151,66) 100%, rgb(240,84,0) 0%);
+    background-image: -webkit-linear-gradient(bottom, rgb(255,151,66) 100%, rgb(240,84,0) 0%);
+    background-image: -ms-linear-gradient(bottom, rgb(255,151,66) 100%, rgb(240,84,0) 0%);
+    
+    background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(1, rgb(255,151,66)),
+	color-stop(0, rgb(240,84,0))
+    );
+}
+#specialform, #restaurantform
+{
+    margin: auto;
+    margin-top: 5%;
+    width: 40%;
+    color: orange;
+}
+#specialform td, #restaurantform td
+{
+    height: 50px;
+}
+#specialform fieldset, #restaurantform fieldset
+{
+    border: 2px solid orange;
+    padding:3%;
+    background-color: #ffea00;
+}
+legend
+{
+    text-align:center;
+    font-size:1.2em;
+}
+form table td
+{
+    vertical-align:top;
 }

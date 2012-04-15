@@ -18,10 +18,11 @@ try
 	}
       else 
 	{
-	  echo '<section id="restaurant">';
-	  echo '<header><img src="images/mairiexp.png" /><h2>' . $restaurant['name'] . '</h2></header>';
-	  echo '<p class="clear">'. $restaurant['description'] . '</p>';
-	  echo '<p>'. $restaurant['address'] . '</p>';
+	 
+	  echo '<div id="wrapper"><section id="restaurant">';
+	  echo '<header><img src="images/mairiexp.png" /><h2>' . $restaurant['name'] . '</h2><ul><li>address: ' . $restaurant['address'] . '</li><li>phone: ' . $restaurant['tel'] . '</li></ul>
+</header>';
+	  echo '<p class="clear" id="description">'. $restaurant['description'] . '</p>';
 	  echo '</section>';
 	  echo '<section id="adminrest">';
 	  if ($_SESSION['id'] == $_GET['id'])
@@ -32,22 +33,22 @@ try
 	      $query = $db->getRestaurantSpecials();
 	      $query->execute(array('id' => $_SESSION['id'],
 				    'date' => date("Y-m-d")));
-	      
+	      echo '<h3>Specials</h3>';
 	      while ($data = $query->fetch())
 		{
 		  echo '<p>' . $data['title'] . ' on ' . $data['date'] . " <a href='specialupdate.php?id=" . $data['id'] . "'>Edit</a></p>";
 		}
 	    }
 	}
-      echo '</section>';
+      echo '</section></div>';
     }
   else
     {
       $query = $db->query('SELECT * FROM restaurants ORDER BY name');
-      echo '<ul>';
+      echo '<ul id="restaulist">';
       while ($restaurant = $query->fetch())
 	{
-	  echo "<a href='spots.php?id=" . $restaurant['id'] . "'>" . $restaurant['name'] . "</a>";
+	  echo "<ol><a href='spots.php?id=" . $restaurant['id'] . "'>" . $restaurant['name'] . "</a></ol>";
 	}
       echo '</ul>';
     }

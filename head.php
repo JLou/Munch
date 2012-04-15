@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <!doctype html>
 <head>
   <title>Munch Stellenbosch</title>

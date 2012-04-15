@@ -1,6 +1,7 @@
 <?php
 include('Db.php');
 session_start();
+include('head.php');
 function day($nb)
 {
   switch ($nb)
@@ -32,17 +33,20 @@ function day($nb)
 if (isset($_SESSION['id']))
   {
     $today = date("w"); //0 == Sunday, 1=Monday..etc
-    echo "<ul>
-            <li class='" . day($today) . "'><a href='specials.php'>today</a></li>
+    echo '<div id="weekcontainer">';
+    echo "<ul id='week'>
+            <li class='" . day($today) . " first'><a href='specials.php'>today</a></li>
             <li class='" . day(($today + 1) % 7) . "'><a href='specials.php?day=1'>tomorrow</a></li>
             <li class='" . day(($today + 2) % 7) . "'><a href='specials.php?day=2'>" . day(($today + 2) % 7) . "</a></li>
             <li class='" . day(($today + 3) % 7) . "'><a href='specials.php?day=3'>" . day(($today + 3) % 7) . "</a></li>
             <li class='" . day(($today + 4) % 7) . "'><a href='specials.php?day=4'>" . day(($today + 4) % 7) . "</a></li>
             <li class='" . day(($today + 5) % 7) . "'><a href='specials.php?day=5'>" . day(($today + 5) % 7) . "</a></li>
-            <li class='" . day(($today + 6) % 7) . "'><a href='specials.php?day=6'>" . day(($today + 6) % 7) . "</a></li>
-          </ul>"; 
+            <li class='" . day(($today + 6) % 7) . " last'><a href='specials.php?day=6'>" . day(($today + 6) % 7) . "</a></li>
+          </ul></div>"; 
+    echo '<div class="clear"></div>';
   }
 else
   {
     header('Location: index.php');
   }
+include('bottom.php');

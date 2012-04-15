@@ -3,7 +3,6 @@
 //DIFFERENT CASES:
 //WE LOG, THEN WE START THE SESSION
 //THE LOGIN FAILED, THEN WE TELL THE USER
-session_start();
 include('Db.php');
 
 //Check user's password, return id

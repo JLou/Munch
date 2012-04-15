@@ -9,19 +9,18 @@
 if(isset($_SESSION['id']) && $db->isrestau($_SESSION['id']))
   {
     echo '<li class="profile"><a href="spots.php?id=' . $_SESSION['id'] .'">Profile</a></li>';	
-  }?>
-  
+		   }?>
+		   
 					<li class="leave">	<a href="index.php?logout=true">Leave</a></li>						 
 				</ul>
 			</nav>
 			<div class="clear"></div>
 			<div id="slider">			
-				<img id="a" src="images/slider2.png"/>				
-				<nav id="slidernav">
+			  <img id="a" class="current" value="1" src="images/slider1.png"/>						<img id="a" value="2" class="next" src="images/slider2.png"/>								<img id="a" value="3" src="images/slider3.png"/>											  <nav id="slidernav">
 					<ul>
-						<li><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
+						<li class="current" value="1">1</li>
+						<li value="2">2</li>
+						<li value="3">3</li>
 					</ul>				
 				</nav>
 			</div>
@@ -55,4 +54,4 @@ if(isset($_SESSION['id']) && $db->isrestau($_SESSION['id']))
 				<div class="pub"></div>
 			</div>
 		</div>
-	
+	</div> <!-- /Wrapper -->

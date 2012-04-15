@@ -52,7 +52,7 @@ class Db
 
   public function getRestaurant($id)
   {
-    $query = $this->_pdo->prepare('SELECT * FROM restaurants WHERE id = ?');
+    $query = $this->_pdo->prepare('SELECT r.* FROM restaurants r WHERE id = ? ');
     $query->execute(array($id));
     return $query->fetch();    
   }
@@ -61,11 +61,15 @@ class Db
   {
     $query = $this->_pdo->prepare('UPDATE restaurants SET
                                    name = :name, location = :location,
-                                   description = :desc
+                                   description = :desc,
+                                   address     = :address,
+                                   tel         = :tel
                                    WHERE id = :id');
     $query->execute(array(':name' => $data['name'],
 			  ':location' => $data['location'],
 			  ':desc'     => $data['description'],
+			  ':address'  => $data['address'],
+			  ':tel'      => $data['tel'],
 			  ':id'       => $id)
 		    );
   }

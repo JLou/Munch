@@ -14,7 +14,6 @@ include('logintreatment.php');
 if (isset($_SESSION['id'])) //We just created the session before
   {
     include('head.php');
-    echo $_SESSION['id'];
     include('homecontent.php');
   }
 else
@@ -22,4 +21,5 @@ else
     header('Location: index.php');
   }
 include('bottom.php');
-?>
+echo'<script src="js/jquery.js"></script>
+<script src="js/slider.js"></script>';
