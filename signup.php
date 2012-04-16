@@ -22,9 +22,13 @@ function mailTaken($db, $email)
   $query->closeCursor();
   return false;
 }
-function issetpost()
+function issetUser()
 {
   return isset($_POST['passwd']) && isset($_POST['name']) && isset($_POST['surname']) && isset($_POST['birth']) && isset($_POST['gender']) && isset($_POST['city']) && isset($_POST['email']) && isset($_POST['email2']) && isset($_POST['passwd2']);
+}
+function issetRestau()
+{
+  return isset($_POST['name']) && isset($_POST['city']) && isset($_POST['email']) && isset($_POST['email2']) && isset($_POST['passwd']) && isset($_POST['passwd2']) && isset($_POST['tel']) && isset($_POST['address']);
 }
 function checkPass()
 {
@@ -43,7 +47,7 @@ function checktel()
 {
   return isset($_POST['tel']) && preg_match("#^0\d\d\d\d\d\d\d\d\d$#", strip_tags($_POST['tel']));
 }
-function addUser($db)
+function addUser($db, $isrestau)
 {
   $gender = strip_tags($_POST['gender']);
   $query = $db->prepare('INSERT INTO users(id, name, surname, birth, gender, city, email, passwd, restaurant, admin) VALUES(:id, :name, :surname, :birth, :gender, :city, :email, :passwd, :restaurant, :admin)');
@@ -56,7 +60,7 @@ function addUser($db)
 			'city' => strtolower(strip_tags($_POST['city'])),
 			'email' => strip_tags($_POST['email']),
 			'passwd' => MD5($_POST['passwd']),
-			'restaurant' => isset($_POST['restaurant']),
+			'restaurant' => $isrestau,
 			'admin' => false));
 
   $query = $db->query('SELECT id FROM users WHERE id = LAST_INSERT_ID()');
@@ -64,16 +68,34 @@ function addUser($db)
   $id = $idd['id'];
   return $id;
 }
-
+function addRestauUser($db, $isrestau)
+{
+  $query = $db->prepare('INSERT INTO users(id, name, surname, birth, gender, city, email, passwd, restaurant, admin) VALUES(:id, :name, :surname, :birth, :gender, :city, :email, :passwd, :restaurant, :admin)');
+  $query->execute(array('id' => '',
+			'name' => strtolower(strip_tags($_POST['name'])),
+			'surname' => '',
+			'birth' => '',
+			'gender' => '',
+			'city' => strtolower(strip_tags($_POST['city'])),
+			'email' => strip_tags($_POST['email']),
+			'passwd' => MD5($_POST['passwd']),
+			'restaurant' => $isrestau,
+			'admin' => false));
+  
+  $query = $db->query('SELECT id FROM users WHERE id = LAST_INSERT_ID()');
+  $idd = $query->fetch();
+  $id = $idd['id'];
+  return $id;
+}
 try
 {
   $db = Db::getInstance();
   
-  if(isset($_POST['restaurant'])) //If restaurant registration
+  if(issetRestau() && isset($_GET['restau'])) //If restaurant registration
 	{
-	    if (issetpost() && checktel() && isset($_POST['address']) && checkEmail($db) && checkPass() && checkbirth())
+	  if (checktel() && checkEmail($db) && checkPass())
 	      {
-		$id = addUser($db);
+		$id = addRestauUser($db, true);
 		$query = $db->prepare('INSERT INTO restaurants(id, name, location, description, checked, tel, address) VALUES(:id, :name, :location, :description, :checked, :tel, :address)');
 		$query->execute(array('id' => $id, 
 				      'name' => strtolower(strip_tags($_POST['name'])),
@@ -93,7 +115,7 @@ try
 		<ul>
 		  <li>Filled every fields</li>
 		  <li>Written a valid date, format: DD/MM/YYYY</li>
-		  <li>Writte a valid email</li>
+		  <li>Written a valid email</li>
 		  <li>Chosen a password with at least one letter and one digit</li>
 		  <li>Your password re-type matches the first password</li>
 		  <li>Entered a valid telephone number</li>
@@ -104,9 +126,9 @@ try
 	}
   else //USER REGISTRATION
     {
-      if (issetpost() && checkEmail($db) && checkPass() && checkbirth())
+      if (issetUser() && checkEmail($db) && checkPass() && checkbirth())
 	{
-	  addUser($db);
+	  addUser($db, false);
 	  echo 'OK USER';
 	}
       else
