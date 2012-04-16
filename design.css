@@ -111,12 +111,12 @@ nav#topnav li.home
 	width:90px;
 	height:48px;
 	line-height:48px;
-	background:url(images/homebutton.png);
+	background:url(images/buttons/homebutton.png);
 	z-index:115;
 }
 nav#topnav li.about
 {
-	background:url(images/aboutbutton.png) no-repeat center center;
+	background:url(images/buttons/aboutbutton.png) no-repeat center center;
 	width:106px;
 	height:40px;
 	line-height:40px;
@@ -127,14 +127,14 @@ nav#topnav li.profile
 {
 	width:123px;
 	height:52px;
-	background:url(images/profilebutton.png);
+	background:url(images/buttons/profilebutton.png);
 	z-index:113;
 	line-height:52px;
 	margin:-9px 0 0 -15px;
 }
 nav#topnav li.leave
 {
-	background:url(images/aboutbutton.png) no-repeat center center;
+	background:url(images/buttons/aboutbutton.png) no-repeat center center;
 	width:106px;
 	height:40px;
 	line-height:40px;
@@ -147,7 +147,7 @@ nav#topnav li.leave
 	position:relative;
 	width:850px;
 	height:264px;
-	background:url("images/slider.png") no-repeat;
+	background:url("images/slider/slider.png") no-repeat;
 	margin:auto;
 	margin-top:-25px;
 	padding-top:25px
@@ -197,7 +197,7 @@ img#a
 	height:61px;
 	line-height:61px;
 	text-align:center;
-	background:url("images/sliderbuton.png") no-repeat;
+	background:url("images/slider/sliderbuton.png") no-repeat;
 	color:transparent!important;
 	color:#FFEA01;
 	text-indent:-9999px
@@ -205,7 +205,7 @@ img#a
 #slider nav#slidernav ul li.current
 {
     cursor:auto;
-    background:url("images/sliderbutton-inactive.png");
+    background:url("images/slider/sliderbutton-inactive.png");
 }
 #specials
 {
@@ -359,11 +359,11 @@ input.button:active {
 }
 #registercontainer h2
 {
-    background:url("images/register.png") no-repeat;
+    background:url("images/buttons/register.png") no-repeat;
 }
 #logincontainer h2
 {
-    background: url("images/login.png") no-repeat;
+    background: url("images/buttons/login.png") no-repeat;
 }
 #homeforms td
 {

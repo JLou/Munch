@@ -11,6 +11,10 @@ function checktel($tel)
 if (isset($_SESSION['id'])) //If we're logged
   {
     $db = Db::getInstance();
+    if (!$db->isrestau($_SESSION['id']))
+      {
+	header("Location:home.php");
+      }
     //$db->getUser($_SESSION['id']);
     $id = intval($_SESSION['id']);
     

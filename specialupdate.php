@@ -19,7 +19,7 @@ if (isset($_SESSION['id']))
     <tr>
       <td><label>title:</label></td><td><input type="text" id="title" name="title" /></td>
     </tr>
-    <tr><td><label>description:</label></td><td><textarea name="description" id="description"></textarea></td>
+    <tr><td><label>description:</label></td><td><textarea name="description" id="descriptionspecial"></textarea></td>
 </tr>
 
        <tr><td><input type="submit" class="button" value="add special"/></td></tr>
@@ -55,7 +55,7 @@ if (isset($_SESSION['id']))
     <tr>
       <td><label>title:</label></td><td><input type="text" id="title" name="title" value="' . $title . '"/></td>
     </tr>
-    <tr><td><label>description:</label></td><td><textarea name="description" id="description">' . $desc . '</textarea></td></tr>
+    <tr><td><label>description:</label></td><td><textarea name="description" id="descriptionspecial">' . $desc . '</textarea></td></tr>
        <tr><td><input type="submit" class="button" value="add special"/></td></tr>
   </table>
 </fieldset>

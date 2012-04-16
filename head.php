@@ -7,9 +7,9 @@
 <body>
 	<header id="banner">
 			<ul>
-				<li><a href="#"><img src="images/twitter.png" alt="Twitter"/></a></li>
-				<li><a href="#"><img src="images/fb.png" alt="Facebook"/></a></li>
-				<li><a href="#"><img src="images/gplus.png" alt="Google Plus"/></a></li>
-				<li><a href="#"><img src="images/contacticon.png" alt="Contact"/></a></li>
+				<li><a href="#"><img src="images/icons/twitter.png" alt="Twitter"/></a></li>
+				<li><a href="#"><img src="images/icons/fb.png" alt="Facebook"/></a></li>
+				<li><a href="#"><img src="images/icons/gplus.png" alt="Google Plus"/></a></li>
+				<li><a href="#"><img src="images/icons/contacticon.png" alt="Contact"/></a></li>
 			</ul>
 		</header>

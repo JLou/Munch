@@ -44,23 +44,31 @@ if (isset($_SESSION['id']))
     if ($db->isrestau($_SESSION['id']))
       {
 	include('head.php');
-	echo "<form method='post' enctype='multipart/form-data' name='specialform' id='specialform' action='pictureupdate.php?update=true'>" .
-	  '<fieldset>
-<legend>Update our profile picture</legend>
-<table>
-    <tr>
-      <td><label>picture:</label></td><td><input type="file" id="picture" name="picture" /></td>
-    </tr>
-   
-       <tr><td><input type="submit" class="button" value="add special"/></td></tr>
-  </table></fieldset>
-  </form>';
+	$check = '';
 	if (isset($_GET['update']) && checkPicture($_FILES['picture']))
 	  {
 	    $newname = 'uploads/avatar' . $_SESSION['id'];
 	    move_uploaded_file($_FILES['picture']['tmp_name'], $newname);
 	    $db->updatePicture($newname, $_SESSION['id']);
+	    $check = '<p class="info">Your new picture has been uploaded, you can now see it on your profile page.</p>';
 	  }
+	
+	echo "<form method='post' enctype='multipart/form-data' name='specialform' id='specialform' action='pictureupdate.php?update=true'>" .
+	  '<fieldset>
+<legend>Update our profile picture</legend>' . $check . '
+<ul><li>The dimensions must be 128x128 (or inferior)</li>
+<li>The size must be less than 1000000 Bytes</li>
+<li>Image type must be jpg, jpeg or png</li>
+</ul>
+<table>
+    <tr>
+      <td><label>picture:</label></td><td><input type="file" id="picture" name="picture" /></td>
+    </tr>
+   
+       <tr><td><input type="submit" class="button" value="upload"/></td></tr>
+  </table></fieldset>
+  </form>';
+	
       }
     else
       {
