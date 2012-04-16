@@ -1,0 +1,52 @@
+<?php
+
+include('head.php');
+include('Db.php');
+include('forms/Restaurant.php');
+session_start();
+function checktel($tel)
+{
+  return isset($tel) && preg_match("#^0\d\d\d\d\d\d\d\d\d$#", strip_tags($tel));
+}
+function checkPicture()
+{
+  /*$infosfichier = pathinfo($_FILES['avatar']['name']);
+  $extension_upload = $infosfichier['extension'];
+  $array = array('jpg', 'jpeg', 'png');
+  list($width, $height, $type, $attr) = getimagesize($$_FILES['avatar']['name']);
+  $inarray = in_array($extension_upload, $array);
+  return isset($_FILES['avatar']) && $_FILES['avatar']['error'] == 0 && $inarray && $width <= 128 && $height <= 128 && $_FILES['avatar']['size'] <= 1000000;*/
+  echo "<pre>".print_r($_FILES, true)."</pre>";
+}
+if (isset($_SESSION['id'])) //If we're logged
+  {
+    $db = Db::getInstance();
+    //$db->getUser($_SESSION['id']);
+    $id = intval($_SESSION['id']);
+    
+    //Update
+    if(isset($_POST['rest_name']) && checkPicture() && checktel($_POST['rest_tel']))
+      {
+	$type = pathinfo($file['name']);
+	$extension = $type['extension'];
+	$move_uploaded_file($_FILES['avatar']['tmp_name'], 'uploads/avatar' . $_SESSION['id'] . '.' . $extension);
+	$db->updateRestaurant($id, array('name'        => strip_tags($_POST['rest_name']),
+					 'location'    => strip_tags($_POST['rest_location']),
+					 'address'     => strip_tags($_POST['rest_address']),
+					 'tel'         => strip_tags($_POST['rest_tel']),
+					 'description' => strip_tags($_POST['rest_desc']),
+					 ));
+      }
+    
+    $restaurant = $db->getRestaurant($id);
+    $form  = new RestaurantForm($restaurant, "edit");
+    
+    $val = $form->render();
+    echo $val;    
+  }
+else
+  {
+    header("Location:index.php");
+  }
+
+include("bottom.php");

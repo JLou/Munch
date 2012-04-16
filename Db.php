@@ -27,6 +27,13 @@ class Db
       }
   }
 
+  public function updatePicture($file, $id)
+  {
+    $query = $this->_pdo->prepare('UPDATE restaurants SET picture = :picture WHERE id = :id');
+    $query->execute(array(':picture' => $file,
+			  ':id' => $id));
+  }
+
   public function isrestau($id)
   {
     try

@@ -20,7 +20,7 @@ try
 	{
 	 
 	  echo '<div id="wrapper"><section id="restaurant">';
-	  echo '<header><img src="images/mairiexp.png" /><h2>' . $restaurant['name'] . '</h2><ul><li>address: ' . $restaurant['address'] . '</li><li>phone: ' . $restaurant['tel'] . '</li></ul>
+	  echo '<header><img src="uploads/avatar' . $_GET['id'] . '" /><h2>' . $restaurant['name'] . '</h2><ul><li>address: ' . $restaurant['address'] . '</li><li>phone: ' . $restaurant['tel'] . '</li></ul>
 </header>';
 	  echo '<p class="clear" id="description">'. $restaurant['description'] . '</p>';
 	  echo '</section>';
