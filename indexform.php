@@ -74,11 +74,7 @@
 	</div>
       </fieldset>
     </form>
-    
-    
-  <div class="clear"></div> 
-  </section>
-  <form method="post" name="register" id="restaurantform" action="signup.php?restau=true">
+     <form method="post" name="register" id="restaurantform" action="signup.php?restau=true">
       <fieldset>
 	<div class="tablecontainer">
 	<table>
@@ -114,7 +110,8 @@
 	</tr>
 	  <tr>
 	  <td class="first"><label for="tel">tel:</label></td>
-	  <td><input type="text" id="tel" name="tel" /></td>
+	  <td><input type="text" id="telprefix" value="+ 27" disabled="disabled" />
+<input type="text" id="tel" name="tel" /></td>
 	  <td class="third" id="ptel">ex: 0812345678</td>
 	</tr>
 	<tr>
@@ -131,6 +128,10 @@
 	</div>
       </fieldset>
     </form>
+
+    
+  <div class="clear"></div> 
+  </section>
   <div class="clear"></div>
 </div>
 </div>

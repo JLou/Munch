@@ -1,5 +1,3 @@
-@include(reset.css);
-
 article, aside, details, figcaption, figure,  
 footer, header, hgroup, menu, nav, section 
 {  
@@ -46,7 +44,7 @@ html
 }
 body
 {
-	background:url(images/b.jpg) repeat #ffea01;
+	background:#ffd900;
 	position:relative;
 	z-index:-100;
 	color:#fff;
@@ -77,12 +75,8 @@ header#banner ul li
 	z-index:-50;
 	width:90%;
 	margin:auto;
-	background-color: #ffea00;
-	border:2px solid #ffff50;
-	outline:1px dashed #fff;
 	margin-top:2%;
 	overflow:hidden;
-	box-shadow: 0 0 18px -3px #000;
 }
 nav#topnav
 {
@@ -111,12 +105,12 @@ nav#topnav li.home
 	width:90px;
 	height:48px;
 	line-height:48px;
-	background:url(images/buttons/homebutton.png);
+	background:url(images/homebutton.png);
 	z-index:115;
 }
 nav#topnav li.about
 {
-	background:url(images/buttons/aboutbutton.png) no-repeat center center;
+	background:url(images/aboutbutton.png) no-repeat center center;
 	width:106px;
 	height:40px;
 	line-height:40px;
@@ -127,14 +121,14 @@ nav#topnav li.profile
 {
 	width:123px;
 	height:52px;
-	background:url(images/buttons/profilebutton.png);
+	background:url(images/profilebutton.png);
 	z-index:113;
 	line-height:52px;
 	margin:-9px 0 0 -15px;
 }
 nav#topnav li.leave
 {
-	background:url(images/buttons/aboutbutton.png) no-repeat center center;
+	background:url(images/aboutbutton.png) no-repeat center center;
 	width:106px;
 	height:40px;
 	line-height:40px;
@@ -147,7 +141,7 @@ nav#topnav li.leave
 	position:relative;
 	width:850px;
 	height:264px;
-	background:url("images/slider/slider.png") no-repeat;
+	background:url("images/slider.png") no-repeat;
 	margin:auto;
 	margin-top:-25px;
 	padding-top:25px
@@ -178,7 +172,7 @@ img#a
 }
 #slider nav
 {
-    margin-top:225px;
+    margin-top:230px;
 }
 #slider nav#slidernav ul{
   border-width:1px 0;
@@ -193,11 +187,11 @@ img#a
 #slider nav#slidernav ul li{
 	display:inline-block;
 	cursor:pointer;
-	width:50px;
-	height:61px;
+	width:11px;
+	height:11px;
 	line-height:61px;
 	text-align:center;
-	background:url("images/slider/sliderbuton.png") no-repeat;
+	background:url("images/sliderbutton.png") no-repeat;
 	color:transparent!important;
 	color:#FFEA01;
 	text-indent:-9999px
@@ -205,24 +199,23 @@ img#a
 #slider nav#slidernav ul li.current
 {
     cursor:auto;
-    background:url("images/slider/sliderbutton-inactive.png");
+    background:url("images/sliderbutton-inactive.png");
 }
 #specials
 {
 	display:table;
-	float:left;
-	width:70%;
+	margin:auto;
+	width:850px;
 }
 #specials #lcol, #rcol
 {
 	display:table-cell;
-	text-align:center;
 }
-#adcol
+.homecol 
 {
-	width:25%;
-	float:right;
-	margin-right: 5%;
+    display:table-cell;
+    text-align:center;
+    vertical-align:top;
 }
 .pub
 {
@@ -311,6 +304,12 @@ input
     border:1px solid #b7b7b7;
     border-radius:5px;
 }
+input:focus
+{
+    outline:none;
+    border: 1px solid #FF7F29;
+    box-shadow: 0 0 7px 3px #ff7f29;
+}
 textarea
 {
     background:#f3eded;
@@ -321,37 +320,17 @@ textarea
 }
 input.button {
     cursor: pointer;
-    font-family: Arial, Helvetica, sans-serif;
+    border:none;
+    background:url("images/go-submit.gif") no-repeat;
+    width:88px;
+    height:45px;
+    color:#fff;
     font-size:1.1em;
-	color: #ffffff;
-	padding: 5px 20px;
-	background: -moz-linear-gradient(
-		top,
-		#f77300 0%,
-		#ffd34f);
-	background: -webkit-gradient(
-		linear, left top, left bottom, 
-		from(#f77300),
-		to(#ffd34f));
-	border-radius: 11px;
-	-moz-border-radius: 11px;
-	-webkit-border-radius: 11px;
-	border: 1px solid #ffb700;
-	-moz-box-shadow:
-		0px 1px 3px rgba(000,000,000,0.5),
-		inset 0px 0px 3px rgba(255,255,255,1);
-	-webkit-box-shadow:
-		0px 1px 3px rgba(000,000,000,0.5),
-		inset 0px 0px 3px rgba(255,255,255,1);
-	text-shadow:
-		0px -1px 0px rgba(000,000,000,0.2),
-		0px 1px 0px rgba(255,255,255,1);
-
+    text-indent:-5px;
+    line-height:47px;
 }
 input.button:hover {
-   border-top-color: #ff920d;
-   background: #ff920d;
-   color: #ffffff;
+
 }
 input.button:active {
    border-top-color: #ffbf00;
@@ -359,11 +338,11 @@ input.button:active {
 }
 #registercontainer h2
 {
-    background:url("images/buttons/register.png") no-repeat;
+    background:url("images/register.png") no-repeat;
 }
 #logincontainer h2
 {
-    background: url("images/buttons/login.png") no-repeat;
+    background: url("images/login.png") no-repeat;
 }
 #homeforms td
 {
@@ -372,6 +351,21 @@ input.button:active {
 #loginform, #registerform
 {
     margin-top: 0;
+}
+#restaurantform input
+{
+    padding-right:35px;
+}
+#restaurantform input#telprefix
+{
+    width:35px;
+    color:#999;
+    background:#ddd;
+    padding:0;
+}
+#restaurantform input#tel, #restaurantform input.button
+{
+    padding:0;
 }
 .special
 {
@@ -464,7 +458,8 @@ section#restaurant header h2
 }
 section#restaurant header ul
 {
-    margin-left: 200px;
+    margin-left: 225px;
+    list-style: circle;
 }
 section#restaurant header ul li
 {
@@ -619,18 +614,15 @@ section#adminrest
 {
     height: 50px;
 }
-#specialform fieldset, #restaurantform fieldset
-{
-    border: 2px solid orange;
-    padding:3%;
-    background-color: #ffea00;
-}
-legend
-{
-    text-align:center;
-    font-size:1.2em;
-}
 form table td
 {
     vertical-align:top;
+}
+
+.elementRestau
+{
+    background:url("images/bargain-bg.gif") no-repeat;
+    width:512px;
+    height:264px;
+    padding:28px 70px 34px 66px;
 }
