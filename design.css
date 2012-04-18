@@ -39,16 +39,16 @@ a:hover
 }
 html
 {
-    background:#ff960d;
+    background:#ffea00;
     overflow-y: scroll;
 }
 body
 {
-	background:#ffd900;
-	position:relative;
-	z-index:-100;
-	color:#fff;
-	min-width: 963px;
+    background:#ffea00;
+    position:relative;
+    z-index:-100;
+    color:#fff;
+    min-width: 963px;
 }
 header#banner
 {
@@ -57,7 +57,6 @@ header#banner
 	background:url('images/banner.png') no-repeat transparent;
 	margin:auto;
 }
-
 header#banner ul 
 {
 	margin:0 0 0 700px;
@@ -105,12 +104,12 @@ nav#topnav li.home
 	width:90px;
 	height:48px;
 	line-height:48px;
-	background:url(images/homebutton.png);
+	background:url(images/buttons/homebutton.png);
 	z-index:115;
 }
 nav#topnav li.about
 {
-	background:url(images/aboutbutton.png) no-repeat center center;
+	background:url(images/buttons/aboutbutton.png) no-repeat center center;
 	width:106px;
 	height:40px;
 	line-height:40px;
@@ -121,14 +120,14 @@ nav#topnav li.profile
 {
 	width:123px;
 	height:52px;
-	background:url(images/profilebutton.png);
+	background:url(images/buttons/profilebutton.png);
 	z-index:113;
 	line-height:52px;
 	margin:-9px 0 0 -15px;
 }
 nav#topnav li.leave
 {
-	background:url(images/aboutbutton.png) no-repeat center center;
+	background:url(images/buttons/aboutbutton.png) no-repeat center center;
 	width:106px;
 	height:40px;
 	line-height:40px;
@@ -141,7 +140,7 @@ nav#topnav li.leave
 	position:relative;
 	width:850px;
 	height:264px;
-	background:url("images/slider.png") no-repeat;
+	background:url("images/slider/slider.png") no-repeat;
 	margin:auto;
 	margin-top:-25px;
 	padding-top:25px
@@ -191,7 +190,7 @@ img#a
 	height:11px;
 	line-height:61px;
 	text-align:center;
-	background:url("images/sliderbutton.png") no-repeat;
+	background:url("images/buttons/sliderbutton.png") no-repeat;
 	color:transparent!important;
 	color:#FFEA01;
 	text-indent:-9999px
@@ -199,7 +198,7 @@ img#a
 #slider nav#slidernav ul li.current
 {
     cursor:auto;
-    background:url("images/sliderbutton-inactive.png");
+    background:url("images/buttons/sliderbutton-inactive.png");
 }
 #specials
 {
@@ -229,24 +228,14 @@ img#a
 
 footer
 {
-	font-size:1.05em;
-	background:#ff960d;
-	margin:auto;
-	margin-top:5%;
-	width:100%;
-	height:200px;
-	border-top-width: 5px;
-	border-left-width: 0px;
-	border-top-style: solid;
-	border-right-style: dashed;
-	border-left-style: solid;
-	border-top-color: white;
-	border-right-color: white;
-	border-left-color: white;
-	border-bottom:none;
-	border-radius:100% 37% 0 0;
-	padding-top:50px;
-	text-align:center;
+    border-top: 1px solid #FFEE2C;
+    font-size:1.05em;
+    margin:auto;
+    margin-top:5%;
+    width:100%;
+    height:200px;
+    padding-top:50px;
+    text-align:center;
 	
 }
 
@@ -321,13 +310,18 @@ textarea
 input.button {
     cursor: pointer;
     border:none;
-    background:url("images/go-submit.gif") no-repeat;
+    background:url("images/buttons/input-submit.png") no-repeat;
     width:88px;
     height:45px;
     color:#fff;
     font-size:1.1em;
     text-indent:-5px;
     line-height:47px;
+}
+input.button:focus
+{
+    border:none;
+    box-shadow: none;
 }
 input.button:hover {
 
@@ -338,11 +332,11 @@ input.button:active {
 }
 #registercontainer h2
 {
-    background:url("images/register.png") no-repeat;
+    background:url("images/buttons/register.png") no-repeat;
 }
 #logincontainer h2
 {
-    background: url("images/login.png") no-repeat;
+    background: url("images/buttons/login.png") no-repeat;
 }
 #homeforms td
 {

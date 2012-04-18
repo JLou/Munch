@@ -69,6 +69,11 @@ try
 	      echo '<p><a href="specialupdate.php">Add special</a></p>';
 	    }
 	}
+      if ($db->isAdmin($_SESSION['id']))
+	{
+	  echo '<p><a href="updatebargain.php?id=' . $_GET['id'] . '">Add bargain</a></p>';
+	}
+
       echo '</section></div>';
     }
   else
