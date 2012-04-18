@@ -74,14 +74,16 @@ try
   else
     {
       $query = $db->query('SELECT * FROM restaurants ORDER BY name');
+      echo '<section id="content" class="spots"><header id="pagebanner"><h1>Spots</h1></header>';
       echo '<ol id="restaulist">';
       while ($restaurant = $query->fetch())
 	{
 	  if ($restaurant['picture'] == '')
 	    $restaurant['picture'] = 'images/default';
+	  
 	  echo "<li class='clear'><div class='elementRestau'><img src='" . $restaurant['picture'] . "'/><a href='spots.php?id=" . $restaurant['id'] . "'>" . $restaurant['name'] . "</a> <p class='excerpt'> " . truncate($restaurant['description']) . "</p></div></li>";
 	}
-      echo '</ol><div class="clear"></div>';
+      echo '</ol><div class="clear"></div></section>';
     }
 }
 catch(Exception $e)

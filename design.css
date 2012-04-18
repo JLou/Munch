@@ -621,8 +621,41 @@ form table td
 
 .elementRestau
 {
-    background:url("images/bargain-bg.gif") no-repeat;
+    background:url("images/pages/bargain-bg.png") no-repeat;
     width:512px;
     height:264px;
     padding:28px 70px 34px 66px;
+}
+
+#content header
+{
+    margin:auto;
+    margin-top:50px;
+    width:939px;
+    height:153px;
+ 
+    position:relative;
+    margin-bottom:80px;
+}
+#content header h1
+{
+    width:314px;
+    height:81px;
+
+    position:absolute;
+    bottom:-30px;
+    line-height:81px;
+    text-indent:85px;
+    font-family:euphemia, sans-serif;
+    font-size:2em;
+    left:70px;
+}
+#content.spots header
+{
+   background:url("images/pages/spots-banner.png") no-repeat;
+}
+
+#content.spots header h1
+{
+   background:url("images/pages/spots-title.png") no-repeat;
 }
