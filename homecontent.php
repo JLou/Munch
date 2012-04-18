@@ -28,18 +28,17 @@ if(isset($_SESSION['id']) && $db->isrestau($_SESSION['id']))
 				</nav>
 			</div>
 			<div id="specials">
-				<div id="lcol">
+				<div id="lcol" class="homecol">
 					<a href="specials.php"><img src="images/home/specials.png" alt="Specials"/></a><br/>
 					<a href="spots.php"><img src="images/home/spots.png" alt="Spots"/></a><br/>
 					<a href="advertise.php"><img src="images/home/advertise.png" alt="Advertise"/></a>
 				</div>
-				<div id="rcol">
+				<div id="rcol" class="homecol">
 					<a href="bargains.php"><img src="images/home/bargains.png" alt="Bargains"/></a><br/>
 					<a href="week.php"><img src="images/home/week.png" alt="Week"/></a><br/>
 					<a href="contact.php"><img src="images/home/contact.png" alt="Contact"/></a>
 				</div>			
-			</div>
-			<div id="adcol">
+  <div id="adcol" class="homecol">
 				<div class="pub">
 					pub	
 					pub
@@ -57,4 +56,6 @@ if(isset($_SESSION['id']) && $db->isrestau($_SESSION['id']))
 				<div class="pub"></div>
 			</div>
 		</div>
+			</div>
+			
 	</div> <!-- /Wrapper -->
