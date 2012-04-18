@@ -27,6 +27,25 @@ class Db
       }
   }
 
+  public function addBargain($data, $restaurant_id)
+  {
+    $query = $this->_pdo->prepare('INSERT INTO bargains(id, restaurant_id, description) VALUES(:id, :restid, :desc)');
+    $query->execute(array(':id' => '',
+			  ':restid' => $restaurant_id,
+			  ':desc' => $data['description']));
+  }
+
+  public function listBargains()
+  {
+    $query = $this->_pdo->query('SELECT b.*, r.name, r.id FROM bargains b LEFT JOIN restaurants r ON b.restaurant_id=r.id ORDER BY b.id DESC LIMIT 3');
+    while ($data = $query->fetch())
+      {
+	echo '<section id="bargain">';
+	echo '<h3><a href="spots.php?id='. $data['restaurant_id'] . '">' . $data['name'] . '</a></h3>';
+	echo '<p>' . $data['description'] . '</p></section>';
+      }
+  }
+  
   public function updatePicture($file, $id)
   {
     $query = $this->_pdo->prepare('UPDATE restaurants SET picture = :picture WHERE id = :id');
