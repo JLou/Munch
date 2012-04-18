@@ -33,6 +33,7 @@ function day($nb)
 if (isset($_SESSION['id']))
   {
     $today = date("w"); //0 == Sunday, 1=Monday..etc
+    echo '<section id="content" class="week"><header id="pagebanner"><h1>Week</h1></header>';
     echo '<div id="weekcontainer">';
     echo "<ul id='week'>
             <li class='" . day($today) . " first'><a href='specials.php'>today</a></li>

@@ -1,0 +1,9 @@
+borders:#fbb92c
+text:#ff4e00
+page bg:#ffd900
+bloc bg:#ffc956
+footer-border:#ffee35
+input-bg:#f3eded
+
+
+bargain-txt:#ff8a00
