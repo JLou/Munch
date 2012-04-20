@@ -33,18 +33,41 @@ function day($nb)
 if (isset($_SESSION['id']))
   {
     $today = date("w"); //0 == Sunday, 1=Monday..etc
+    include('nav.php');
     echo '<section id="content" class="week"><header id="pagebanner"><h1>Week</h1></header>';
     echo '<div id="weekcontainer">';
-    echo "<ul id='week'>
-            <li class='" . day($today) . " first'><a href='specials.php'>today</a></li>
-            <li class='" . day(($today + 1) % 7) . "'><a href='specials.php?day=1'>tomorrow</a></li>
-            <li class='" . day(($today + 2) % 7) . "'><a href='specials.php?day=2'>" . day(($today + 2) % 7) . "</a></li>
-            <li class='" . day(($today + 3) % 7) . "'><a href='specials.php?day=3'>" . day(($today + 3) % 7) . "</a></li>
-            <li class='" . day(($today + 4) % 7) . "'><a href='specials.php?day=4'>" . day(($today + 4) % 7) . "</a></li>
-            <li class='" . day(($today + 5) % 7) . "'><a href='specials.php?day=5'>" . day(($today + 5) % 7) . "</a></li>
-            <li class='" . day(($today + 6) % 7) . " last'><a href='specials.php?day=6'>" . day(($today + 6) % 7) . "</a></li>
-          </ul></div>"; 
-    echo '<div class="clear"></div>';
+    echo '<div class="clear"></div>'; ?>
+	<div id="specials">
+	   <div id="lcol" class="homecol">
+	   <a href="specials.php?day=1"><img src="images/pages/days/monday.png" alt="Monday"/></a><br/>
+	   <a href="specials.php?day=3"><img src="images/pages/days/wednesday.png" alt="Wednesday"/></a><br/>
+	   <a href="specials.php?day=5"><img src="images/pages/days/friday.png" alt="Friday"/></a><br/>
+ <a href="week.php?day=0"><img src="images/pages/days/sunday.png" alt="Sunday"/></a>
+				</div>
+				<div id="rcol" class="homecol">
+   <a href="specials.php?day=2"><img src="images/pages/days/tuesday.png" alt="Tuesday"/></a><br/>	   
+<a href="specials.php?day=4"><img src="images/pages/days/thursday.png" alt="Thursday"/></a><br/>	   
+<a href="specials.php?day=6"><img src="images/pages/days/saturday.png" alt="Saturday"/></a><br/>
+				</div>			
+
+				<div class="pub">
+					pub	
+					pub
+					pub
+					pub
+					pub
+					pub
+					pub
+					pub
+					pub
+				</div>
+				<div class="pub"></div>
+				<div class="pub"></div>
+				<div class="pub"></div>
+				<div class="pub"></div>
+			</div>
+		</div>
+<?php
   }
 else
   {

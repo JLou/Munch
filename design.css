@@ -621,7 +621,7 @@ form table td
 #content header
 {
     margin:auto;
-    margin-top:50px;
+    margin-top:65px;
     width:939px;
     height:153px;
  
@@ -671,4 +671,79 @@ form table td
 #content.week header h1
 {
    background:url("images/pages/week-title.png") no-repeat;
+}
+
+#content.monday header
+{
+   background:url("images/pages/days/monday-banner.png") no-repeat;
+}
+
+#content.monday header h1
+{
+   background:url("images/pages/days/monday-title.png") no-repeat;
+}
+
+#content.tuesday header
+{
+   background:url("images/pages/days/tuesday-banner.png") no-repeat;
+}
+
+#content.tuesday header h1
+{
+   background:url("images/pages/days/tuesday-title.png") no-repeat;
+}
+
+
+#content.wednesday header
+{
+   background:url("images/pages/days/wednesday-banner.png") no-repeat;
+}
+
+#content.wednesday header h1
+{
+   background:url("images/pages/days/wednesday-title.png") no-repeat;
+}
+
+
+#content.thursday header
+{
+   background:url("images/pages/days/thursday-banner.png") no-repeat;
+}
+
+#content.thursday header h1
+{
+   background:url("images/pages/days/thursday-title.png") no-repeat;
+}
+
+
+#content.friday header
+{
+   background:url("images/pages/days/friday-banner.png") no-repeat;
+}
+
+#content.friday header h1
+{
+   background:url("images/pages/days/friday-title.png") no-repeat;
+}
+
+
+#content.saturday header
+{
+   background:url("images/pages/days/saturday-banner.png") no-repeat;
+}
+
+#content.saturday header h1
+{
+   background:url("images/pages/days/saturday-title.png") no-repeat;
+}
+
+
+#content.sunday header
+{
+   background:url("images/pages/days/sunday-banner.png") no-repeat;
+}
+
+#content.sunday header h1
+{
+   background:url("images/pages/days/sunday-title.png") no-repeat;
 }
