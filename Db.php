@@ -102,13 +102,22 @@ class Db
 
   public function addSpecial($post, $restid)
   {
+    $query = $this->_pdo->prepare('SELECT * FROM specials WHERE restaurant_id=:restid AND date=:date');
     list($day, $month, $year) = split('[/]', strip_tags($post['date']));
-    $query = $this->_pdo->prepare('INSERT INTO specials(id, date, restaurant_id, description, title) VALUES(:id, :date, :restid, :desc, :title)');
-    $query->execute(array(':id' => '',
-			  ':date' => $year . '/' . $month . '/' . $day,
-			  ':title' => strip_tags($post['title']),
-			  ':desc' => strip_tags($post['description']),
-			  ':restid' => $restid));
+    $query->execute(array(':restid' => $restid,
+			  ':date' => $year . '/' . $month . '/' . $day));
+    if ($query->fetch() == null)
+      {
+	$query = $this->_pdo->prepare('INSERT INTO specials(id, date, restaurant_id, description, title) VALUES(:id, :date, :restid, :desc, :title)');
+	$query->execute(array(':id' => '',
+			      ':date' => $year . '/' . $month . '/' . $day,
+			      ':title' => strip_tags($post['title']),
+			      ':desc' => strip_tags($post['description']),
+			      ':restid' => $restid));
+	return true;
+      }
+    else
+      return false;
   }
   
   public function query($query)
@@ -153,6 +162,12 @@ class Db
 	echo '<p class="description">' . $data['description'] . '</p>';
 	echo '</section>';
       }
+  }
+
+  public function removeSpecial($id)
+  {
+    $query = $this->_pdo->prepare('DELETE FROM specials WHERE id=:id');
+    $query->execute(array('id' => $id));
   }
 
   public function getRestaurantSpecials()
