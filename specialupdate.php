@@ -4,13 +4,21 @@ session_start();
 if (isset($_SESSION['id']))
   {
     $db = Db::getInstance();
-    if (!isset($_GET['id']))
+    if (isset($_GET['removeid']))
       {
-	if ($db->isrestau($_SESSION['id']))
+	include('head.php');
+	echo '<p>Your special has been removed!</p>';
+	$db->removeSpecial($_GET['removeid']);
+      }
+    else
+      {
+	if (!isset($_GET['id']))
 	  {
-	    include('head.php');
-	    echo "<form method='post' name='specialform' id='specialform' action='specialtreatment.php'>" .
-  '<fieldset>
+	    if ($db->isrestau($_SESSION['id']))
+	      {
+		include('head.php');
+		echo "<form method='post' name='specialform' id='specialform' action='specialtreatment.php'>" .
+		  '<fieldset>
 <legend>Add special</legend>
 <table>
     <tr>
@@ -25,26 +33,26 @@ if (isset($_SESSION['id']))
        <tr><td><input type="submit" class="button" value="add special"/></td></tr>
   </table></fieldset>
   </form>';
+	      }
+	    else
+	      {
+		header('Location: home.php');
+	      }
 	  }
 	else
 	  {
-	    header('Location: home.php');
-	  }
-      }
-    else
-      {
-	//We have a parameter id in url
-	$special = $db->getSpecial($_GET['id']);
-	if ($special['restaurant_id'] == $_SESSION['id'])
-	  {
-	    include('head.php');
+	    //We have a parameter id in url
+	    $special = $db->getSpecial($_GET['id']);
+	    if ($special['restaurant_id'] == $_SESSION['id'])
+	      {
+		include('head.php');
 	    
-	    $date = $special['date'];
-	    list($year, $month, $day) = split('[-]', $date);
-	    $date = $day . '/' . $month . '/' . $year;
-	    $desc = $special['description'];
-	    $title = $special['title'];
-	    echo '<form method="post" name="specialform" id="specialform" action="specialtreatment.php?id=' . $special['id'] . '">
+		$date = $special['date'];
+		list($year, $month, $day) = split('[-]', $date);
+		$date = $day . '/' . $month . '/' . $year;
+		$desc = $special['description'];
+		$title = $special['title'];
+		echo '<form method="post" name="specialform" id="specialform" action="specialtreatment.php?id=' . $special['id'] . '">
 
 <fieldset>
 <legend>Update special</legend>
@@ -61,10 +69,8 @@ if (isset($_SESSION['id']))
 </fieldset>
 
   </form>';
-	  }
-	else
-	  {
-	    header('Location: home.php');
+	      
+	      }
 	  }
       }
   }

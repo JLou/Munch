@@ -64,7 +64,7 @@ try
 	      echo '<h3>Specials</h3>';
 	      while ($data = $query->fetch())
 		{
-		  echo '<p>' . $data['title'] . ' on ' . $data['date'] . " <a href='specialupdate.php?id=" . $data['id'] . "'>Edit</a></p>";
+		  echo '<p>' . $data['title'] . ' on ' . $data['date'] . " <br /><a href='specialupdate.php?id=" . $data['id'] . "'>Edit</a> <a href='specialupdate.php?removeid=" . $data['id'] . "'>Remove</a></p>";
 		}
 	      echo '<p><a href="specialupdate.php">Add special</a></p>';
 	    }
