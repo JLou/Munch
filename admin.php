@@ -10,26 +10,7 @@ if (isset($_SESSION['id']))
 	try
 	  {
 	    $db = Db::getInstance();
-	    $array = array();
-	    $query = $db->query('SELECT * FROM restaurants');
-	    while ($restaurant = $query->fetch())
-	      {
-		if (!$restaurant['checked'])
-		  array_push($array, $restaurant);
-	      }
-	      
-	    //LIST RESTAURANTS
-	    $length = count($array);
-	    echo '<p> restaurants registered: <br />';
-	    for ($i = 0; $i < $length; $i++)
-	      {
-		$query = $db->prepare('SELECT * FROM users WHERE id=:id');
-		$query->execute(array('id' => $array[$i]['id']));
-		$user = $query->fetch(); //User account for the restaurant
-		  
-		echo $array[$i]['name'] . " " . $array[$i]['location'] . " " . $user['email'] . "<a href='admin.php?restidconfirm=". $array[$i]['id'] ."'>Confirm</a>" . "<a href='admin.php?restiddelete=". $array[$i]['id'] ."'>Delete</a>" . '<br />';
-	      }
-	      
+	    
 	    if (isset($_GET['restidconfirm']) && !isset($_GET['restiddelete']))
 	      {
 		//CONFIRM THE RESTAU
@@ -51,9 +32,28 @@ if (isset($_SESSION['id']))
 		    $query->execute(array('id' => $_GET['restiddelete']));
 		  }
 	      }
+
+	    $array = array();
+	    $query = $db->query('SELECT * FROM restaurants');
+	    while ($restaurant = $query->fetch())
+	      {
+		if (!$restaurant['checked'])
+		  array_push($array, $restaurant);
+	      }
 	      
-	    echo '</p>';
-	      
+	    //LIST RESTAURANTS
+	    $length = count($array);
+	    echo '<p id="admintablep"> restaurants registered: </p>';
+	    echo '<table id="admintable">';
+	    for ($i = 0; $i < $length; $i++)
+	      {
+		$query = $db->prepare('SELECT * FROM users WHERE id=:id');
+		$query->execute(array('id' => $array[$i]['id']));
+		$user = $query->fetch(); //User account for the restaurant
+		
+		echo '<tr><td>' . $array[$i]['name'] . "</td><td>" . $array[$i]['location'] . "</td><td>" . $user['email'] . "</td><td>+27 " . $array[$i]['tel'] . "</td><td><a href='admin.php?restidconfirm=". $array[$i]['id'] ."'>Confirm</a></td>" . "<td><a href='admin.php?restiddelete=". $array[$i]['id'] ."'>Delete</a></td></tr>" . '<br />';
+	      }
+	    echo '</table>';
 	    $query->closeCursor();
 	  }
 	catch(Exception $e)

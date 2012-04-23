@@ -17,7 +17,7 @@ if(isset($_SESSION['id']) && $db->isrestau($_SESSION['id']))
 			<div class="clear"></div>
 			<div id="slider">			
 			  <img id="a" class="current" value="1" src="images/slider/slider1.png"/>						<img id="a" value="2" class="next" src="images/slider/slider2.png"/>								<img id="a" value="3" src="images/slider/slider3.png"/>
-			  <img id="a" class="current" value="4" src="images/slider/slider4.png"/>
+			  <img id="a" value="4" src="images/slider/slider4.png"/>
 			  <nav id="slidernav">
 					<ul>
 						<li class="current" value="1">1</li>
@@ -27,6 +27,10 @@ if(isset($_SESSION['id']) && $db->isrestau($_SESSION['id']))
 					</ul>				
 				</nav>
 			</div>
+  <?php if (isset($_SESSION['id']) && $db->isAdmin($_SESSION['id'])) {
+					?>
+					  <p class="backlink"><a href="admin.php">Admin</a></p>
+  <?php } ?>
 			<div id="specials">
 				<div id="lcol" class="homecol">
 					<a href="specials.php"><img src="images/home/specials.png" alt="Specials"/></a><br/>

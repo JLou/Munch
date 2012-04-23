@@ -5,12 +5,13 @@ class Db
   protected static $_instance = null;
   protected $_pdo;
 
-  protected function __construct($host="localhost", $user="root", $pass="steaksteak", $dbname="munch")
+  protected function __construct($host="sql8.flk1.host-h.net", $user="munchadmin", $pass="SGVnQk28", $dbname="munchdb")
   {
     $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
     $this->_pdo = new PDO('mysql:host=localhost;dbname=' . $dbname, $user, $pass, $pdo_options);
   }
 
+  
   public function isAdmin($id)
   {
     try
@@ -40,9 +41,9 @@ class Db
     $query = $this->_pdo->query('SELECT b.*, r.name, r.id FROM bargains b LEFT JOIN restaurants r ON b.restaurant_id=r.id ORDER BY b.id DESC LIMIT 3');
     while ($data = $query->fetch())
       {
-	echo '<section id="bargain">';
-	echo '<h3><a href="spots.php?id='. $data['restaurant_id'] . '">' . $data['name'] . '</a></h3>';
-	echo '<p>' . $data['description'] . '</p></section>';
+	echo '<article class="articlebox">';
+	echo '<header><h3><a href="spots.php?id='. $data['restaurant_id'] . '">' . $data['name'] . '</a></h3></header>';
+	echo '<p>' . $data['description'] . '</p></article>';
       }
   }
   
@@ -151,23 +152,57 @@ class Db
 
   }
   
+  function truncate($str, $id, $length=300, $trailing='see more...')
+  {
+    /*
+    ** $str -String to truncate
+    ** $length - length to truncate
+    ** $trailing - the trailing character, default: "..."
+    */
+    // take off chars for the trailing
+    $length-=mb_strlen($trailing);
+    if (mb_strlen($str)> $length)
+      {
+	// string exceeded length, truncate and add trailing dots
+	return mb_substr($str,0,$length) . ' <a href="specials.php?id=' . $id . '">' . $trailing . '</a>';
+      }
+    else
+      {
+	// string was already short enough, return the string
+	$res = $str;
+      }
+    
+    return $res;
+    
+  }
+  
+  public function getSpecialTruncate($id)
+  {
+    $query = $this->_pdo->prepare('SELECT s.date, s.description, s.title, r.location, r.address, r.tel, r.name, r.id FROM specials s LEFT JOIN restaurants r ON s.restaurant_id=r.id WHERE s.id=:id ORDER BY id');
+    $query->execute(array(':id' => $id));;
+    $data = $query->fetch();
+    return $data;
+  }
+  
   public function getSpecials($date)
   {
-    $query = $this->_pdo->prepare('SELECT s.date, s.description, s.title, r.location, r.address, r.tel, r.name, r.id FROM specials s LEFT JOIN restaurants r ON s.restaurant_id=r.id WHERE s.date=:date ORDER BY id');
+    $query = $this->_pdo->prepare('SELECT s.date, s.description, s.title, s.id as sid, r.location, r.address, r.tel, r.name, r.id FROM specials s LEFT JOIN restaurants r ON s.restaurant_id=r.id WHERE s.date=:date ORDER BY s.id');
     $query->execute(array(':date' => $date));;
     while ($data = $query->fetch())
       {
-	echo '<section class="special">';
-	echo '<header><h2>' . $data['title'] . "</h2><p>at <a href='spots.php?id=" . $data['id'] . "'>" . $data['name'] . '</a>, ' . $data['location'] . '</p></header>';
-	echo '<p class="description">' . $data['description'] . '</p>';
-	echo '</section>';
+	echo '<article class="articlebox">';
+	echo '<header><h3>' . $data['title'] . "</h3><p>at <a href='spots.php?id=" . $data['id'] . "'>" . $data['name'] . '</a>, ' . $data['location'] . '</p></header>';
+	echo $this->truncate('<p class="description">' . $data['description'], $data['sid']);
+	echo '</p>';
+	echo '</article>';
       }
   }
 
-  public function removeSpecial($id)
+  public function removeSpecial($id, $rid)
   {
-    $query = $this->_pdo->prepare('DELETE FROM specials WHERE id=:id');
-    $query->execute(array('id' => $id));
+    $query = $this->_pdo->prepare('DELETE FROM specials WHERE id=:id AND restau_id=:rid');
+    $query->execute(array('id' => $id),
+		    array('rid' => $rid));
   }
 
   public function getRestaurantSpecials()

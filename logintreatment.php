@@ -34,7 +34,8 @@ if (isset($_GET['log']) && !isset($_SESSION['id'])) //session not created
 	  }
 	else 
 	  {
-	    echo 'wrong pass/email try again';
+	    include('head.php');
+	    echo '<p class="warning">You entered a wrong pass or email <a href="index.php">try again</a></p>';
 	  }
       }
     catch(Exception $e)

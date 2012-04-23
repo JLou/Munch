@@ -21,6 +21,10 @@ if (isset($_SESSION['id']))
 <tr><td><input type="submit" value="add bargain" /></td></tr>
 						</form>';
 	      }
+	    else
+	      {
+		header('Location: admin.php');
+	      }
 	    if (isset($_POST['description']) && isset($_GET['add']))
 	      {
 		echo 'Your bargain has been updated';

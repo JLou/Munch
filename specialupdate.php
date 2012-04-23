@@ -7,8 +7,8 @@ if (isset($_SESSION['id']))
     if (isset($_GET['removeid']))
       {
 	include('head.php');
-	echo '<p>Your special has been removed!</p>';
-	$db->removeSpecial($_GET['removeid']);
+	echo '<p class="message">Your special has been removed!</p>';
+	$db->removeSpecial(intval($_GET['removeid']), $_SESSION['id']);
       }
     else
       {
@@ -17,7 +17,7 @@ if (isset($_SESSION['id']))
 	    if ($db->isrestau($_SESSION['id']))
 	      {
 		include('head.php');
-		echo "<form method='post' name='specialform' id='specialform' action='specialtreatment.php'>" .
+		echo "<p class='backlink'><a href='spots.php?id=" . $_SESSION['id'] . "'>&larr; back to profile</a></p><form class='restauform' method='post' name='specialform' id='specialform' action='specialtreatment.php'>" .
 		  '<fieldset>
 <legend>Add special</legend>
 <table>
@@ -30,7 +30,7 @@ if (isset($_SESSION['id']))
     <tr><td><label>description:</label></td><td><textarea name="description" id="descriptionspecial"></textarea></td>
 </tr>
 
-       <tr><td><input type="submit" class="button" value="add special"/></td></tr>
+       <tr><td><input type="submit" class="button" value="add"/></td></tr>
   </table></fieldset>
   </form>';
 	      }
@@ -42,7 +42,7 @@ if (isset($_SESSION['id']))
 	else
 	  {
 	    //We have a parameter id in url
-	    $special = $db->getSpecial($_GET['id']);
+	    $special = $db->getSpecial(intval($_GET['id']));
 	    if ($special['restaurant_id'] == $_SESSION['id'])
 	      {
 		include('head.php');
@@ -52,7 +52,7 @@ if (isset($_SESSION['id']))
 		$date = $day . '/' . $month . '/' . $year;
 		$desc = $special['description'];
 		$title = $special['title'];
-		echo '<form method="post" name="specialform" id="specialform" action="specialtreatment.php?id=' . $special['id'] . '">
+		echo '<p class="backlink"><a href="spots.php?id=' . $_SESSION['id'] . '">&larr; back to profile</a></p><form class="restauform" method="post" name="specialform" id="specialform" action="specialtreatment.php?id=' . $special['id'] . '">
 
 <fieldset>
 <legend>Update special</legend>
@@ -64,7 +64,7 @@ if (isset($_SESSION['id']))
       <td><label>title:</label></td><td><input type="text" id="title" name="title" value="' . $title . '"/></td>
     </tr>
     <tr><td><label>description:</label></td><td><textarea name="description" id="descriptionspecial">' . $desc . '</textarea></td></tr>
-       <tr><td><input type="submit" class="button" value="add special"/></td></tr>
+       <tr><td><input type="submit" class="button" value="update"/></td></tr>
   </table>
 </fieldset>
 

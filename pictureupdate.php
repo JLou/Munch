@@ -50,10 +50,10 @@ if (isset($_SESSION['id']))
 	    $newname = 'uploads/avatar' . $_SESSION['id'];
 	    move_uploaded_file($_FILES['picture']['tmp_name'], $newname);
 	    $db->updatePicture($newname, $_SESSION['id']);
-	    $check = '<p class="info">Your new picture has been uploaded, you can now see it on your profile page.</p>';
+	    $check = '<p class="message">Your new picture has been uploaded, you can now see it on your profile page.</p>';
 	  }
 	
-	echo "<form method='post' enctype='multipart/form-data' name='specialform' id='specialform' action='pictureupdate.php?update=true'>" .
+	echo "<p class='backlink'><a href='spots.php?id=" . $_SESSION['id'] . "'>&larr; back to profile</a></p><form class='restauform'method='post' enctype='multipart/form-data' name='specialform' id='specialform' action='pictureupdate.php?update=true'>" .
 	  '<fieldset>
 <legend>Update our profile picture</legend>' . $check . '
 <ul><li>The dimensions must be 128x128 (or inferior)</li>

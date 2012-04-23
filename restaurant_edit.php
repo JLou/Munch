@@ -18,6 +18,8 @@ if (isset($_SESSION['id'])) //If we're logged
     //$db->getUser($_SESSION['id']);
     $id = intval($_SESSION['id']);
     
+    include('nav.php');
+    echo '<section id="content" class="spots"><header id="pagebanner"><h1><a href="spots.php">Spots</a></h1></header>';
     //Update
     if(isset($_POST['rest_name']) && checktel($_POST['rest_tel']))
       {	

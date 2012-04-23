@@ -152,20 +152,20 @@
     //SLIDE DOWN FOR THE FORMS
     var slide = false;
     var slidelogin = false;
-    $("#registerform").hide();
+    $(".blockcontainer").hide();
     $("#homeforms h2").addClass("pointer");
-    $("#registerform, #loginform").addClass("hidden");
+    $(".blockcontainer, #loginform").addClass("hidden");
     $("#registercontainer h2").click(function() 
 			       {
 				   
 				   if (slide)
 				   {
-				       $("#registerform").slideToggle("200", function(){$("#registerform").toggleClass("hidden");});
+				       $(".blockcontainer").slideToggle("200", function(){$(".blockcontainer").toggleClass("hidden");});
 				   } 
 				   else
 				   {
-				       $("#registerform").toggleClass("hidden");
-				       $("#registerform").slideToggle("200");
+				       $(".blockcontainer").toggleClass("hidden");
+				       $(".blockcontainer").slideToggle("200");
 				   }
 				   //$("#logincontainer").toggle("200");	
 	
@@ -187,12 +187,4 @@
 				   slidelogin = !slidelogin;
 			       });
     
-    
-
-    $("#talkbubble").hide();
-    $("#bubble").click(function()
-		       {
-			   $("#talkbubble").fadeToggle("600");
-		       });
-
 })();

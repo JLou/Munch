@@ -11,8 +11,8 @@ function mailTaken($db, $email)
       if ($user['email'] == $email)
 	{
 	  echo '
-<p>
-	    Sorry, there is already an account with this email, you can\'t use it
+<p class="warning">
+	    Sorry, there is already an account with this email, you can\'t use it.
 </p>';
 	  $query->closeCursor();
 	  return true;
@@ -32,7 +32,7 @@ function issetRestau()
 }
 function checkPass()
 {
-  return strlen($_POST['passwd']) >= 6 && preg_match("#[0-9]+#", strip_tags($_POST['passwd'])) && (strip_tags($_POST['passwd']) == strip_tags($_POST['passwd2']));
+  return strlen($_POST['passwd']) >= 6 && (strip_tags($_POST['passwd']) == strip_tags($_POST['passwd2']));
 }
 function checkEmail($db)
 {
@@ -45,7 +45,7 @@ function checkbirth()
 
 function checktel()
 {
-  return isset($_POST['tel']) && preg_match("#^0\d\d\d\d\d\d\d\d\d$#", strip_tags($_POST['tel']));
+  return isset($_POST['tel']) && preg_match("#^\d\d\d\d\d\d\d\d\d$#", strip_tags($_POST['tel']));
 }
 function addUser($db, $isrestau)
 {
@@ -90,8 +90,8 @@ function addRestauUser($db, $isrestau)
 try
 {
   $db = Db::getInstance();
-  
-  if(issetRestau() && isset($_GET['restau'])) //If restaurant registration
+  echo '<p class="backlink"><a href="index.php">&larr; Back</a></p>';
+  if(issetRestau() && isset($_POST['toscheck']) && isset($_GET['restau'])) //If restaurant registration
 	{
 	  if (checktel() && checkEmail($db) && checkPass())
 	      {
@@ -104,12 +104,13 @@ try
 				      'checked' => false,
 				      'tel' => strip_tags($_POST['tel']),
 				      'address' => strtolower(strip_tags($_POST['address']))));
-		echo "<p>Your retaurant account has been created, now you have to wait for the confirmation of our administration. Please send a mail to rick@letsmunch.ac.za to confirm you're a restaurant. We will also call you. This is only to prevent fake accounts. When your account will be confirmed, you'll have the possibility to add specials and update your restaurant profile page</p>
-		<p>Thank you for using munch</p>
-		<p>The munch team</p>";
+		echo "<div class='message'><h4>Congratulations!</h4><p>Your retaurant account has been created, now you have to wait for the confirmation of our administration. Please send a mail to rick@letsmunch.ac.za to confirm you're a restaurant. We will also call you. This is only to prevent fake accounts. When your account will be confirmed, you'll have the possibility to add specials and update your restaurant profile page.</p>
+		<p id='punchline'>Thank you for using munch <br />
+		The munch team</p></div>";
 	      }
 	    else
 	      {?>
+		<div class="warning">
 		<h4>Wrong form</h4>
 		  <p>You filled in a wrong form. Please make sure that you have:
 		<ul>
@@ -121,19 +122,33 @@ try
 		  <li>Entered a valid telephone number</li>
 		</ul>
 		  </p>
+</div>
  	      <?php
 	      }
 	}
   else //USER REGISTRATION
     {
-      if (issetUser() && checkEmail($db) && checkPass() && checkbirth())
+      if (issetUser() && isset($_POST['toscheck']) && checkEmail($db) && checkPass() && checkbirth())
 	{
 	  addUser($db, false);
-	  echo 'OK USER';
+	  echo '<div class="message"><h4>Congratulations!</h4><p>Your account has been created, you can now use munch website.</p></div>';
 	}
       else
 	{
-	  echo 'Wrong form USER';
+	  echo '<div class="warning">
+	    <h4>Wrong form</h4>
+	    <p>You filled in a wrong form. Please make sure that you have:
+	    <ul>
+	    <li>Filled every fields</li>
+	    <li>Written a valid date, format: DD/MM/YYYY</li>
+	    <li>Written a valid email</li>
+	    <li>Chosen a password with at least one letter and one digit</li>
+	    <li>Your password re-type matches the first password</li>
+	    <li>Entered a valid telephone number</li>
+	    </ul>
+	    </p>
+	    </div>';
+	  
        	}
     }
 }	

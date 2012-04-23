@@ -34,7 +34,7 @@ if (isset($_SESSION['id']))
   {
     $today = date("w"); //0 == Sunday, 1=Monday..etc
     include('nav.php');
-    echo '<section id="content" class="week"><header id="pagebanner"><h1>Week</h1></header>';
+    echo '<section id="content" class="week"><header id="pagebanner"><h1><a href="home.php">Week</a></h1></header>';
     echo '<div id="weekcontainer">';
     echo '<div class="clear"></div>'; ?>
 	<div id="specials">
@@ -42,7 +42,7 @@ if (isset($_SESSION['id']))
 	   <a href="specials.php?day=1"><img src="images/pages/days/monday.png" alt="Monday"/></a><br/>
 	   <a href="specials.php?day=3"><img src="images/pages/days/wednesday.png" alt="Wednesday"/></a><br/>
 	   <a href="specials.php?day=5"><img src="images/pages/days/friday.png" alt="Friday"/></a><br/>
- <a href="week.php?day=0"><img src="images/pages/days/sunday.png" alt="Sunday"/></a>
+ <a href="specials.php?day=0"><img src="images/pages/days/sunday.png" alt="Sunday"/></a>
 				</div>
 				<div id="rcol" class="homecol">
    <a href="specials.php?day=2"><img src="images/pages/days/tuesday.png" alt="Tuesday"/></a><br/>	   
@@ -65,7 +65,8 @@ if (isset($_SESSION['id']))
 				<div class="pub"></div>
 				<div class="pub"></div>
 				<div class="pub"></div>
-			</div>
+	   </div>
+	   <p class="backlink"><a href="home.php">&larr; Home</a></p>
 		</div>
 <?php
   }
