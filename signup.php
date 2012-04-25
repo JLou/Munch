@@ -87,6 +87,14 @@ function addRestauUser($db, $isrestau)
   $id = $idd['id'];
   return $id;
 }
+function sendMail($restaurant, $email)
+{
+  $msg = "Welcome to Munch!\nYOur account has been created, you can now connect to the website and use all Munch functionalities."; 
+  if ($restaurant)
+    $msg = "Welcome to Munch! Your restaurant account has been created. Now just wait for the confirmation of our administration. We will send you an email when you'll be confirmed as a restaurant.";
+    
+  mail($email, "Munch registration", $msg);
+}
 try
 {
   $db = Db::getInstance();
@@ -104,9 +112,10 @@ try
 				      'checked' => false,
 				      'tel' => strip_tags($_POST['tel']),
 				      'address' => strtolower(strip_tags($_POST['address']))));
-		echo "<div class='message'><h4>Congratulations!</h4><p>Your retaurant account has been created, now you have to wait for the confirmation of our administration. Please send a mail to rick@letsmunch.ac.za to confirm you're a restaurant. We will also call you. This is only to prevent fake accounts. When your account will be confirmed, you'll have the possibility to add specials and update your restaurant profile page.</p>
+		echo "<div class='message'><h4>Congratulations!</h4><p>Your retaurant account has been created, now you have to wait for the confirmation of our administration. Please send a mail to rick@letsmunch.ac.za to confirm you're a restaurant. We will also call you. This is only to prevent fake accounts. When your account will be confirmed, you'll have the possibility to add specials and update your restaurant profile page. An email has been sent. Welcome to Munch.</p>
 		<p id='punchline'>Thank you for using munch <br />
 		The munch team</p></div>";
+		sendMail(true, strip_tags($_POST['email']));
 	      }
 	    else
 	      {?>
@@ -131,7 +140,8 @@ try
       if (issetUser() && isset($_POST['toscheck']) && checkEmail($db) && checkPass() && checkbirth())
 	{
 	  addUser($db, false);
-	  echo '<div class="message"><h4>Congratulations!</h4><p>Your account has been created, you can now use munch website.</p></div>';
+	  echo '<div class="message"><h4>Congratulations!</h4><p>Your account has been created, you can now use munch website. An email has been sent. Welcome to Munch.</p></div>';
+	  sendMail(false, strip_tags($_POST['email']));
 	}
       else
 	{

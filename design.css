@@ -1159,3 +1159,13 @@ p.warning a:hover, p.message a:hover
 {
     color: white;
 }
+#profileuser h2
+{
+    font-size: 1.2em;
+    color: orange;
+}
+#homeforms p.info
+{
+    text-indent: 20%;
+    margin-bottom: 30px;
+}

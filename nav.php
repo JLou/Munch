@@ -8,7 +8,10 @@
 if($db->isrestau($_SESSION['id']))
   {
     echo '<li class="profile"><a href="spots.php?id=' . $_SESSION['id'] .'">Profile</a></li>';	
-  }?>
+  }
+else
+  echo '<li class="profile"><a href="profile.php?id=' . $_SESSION['id'] .'">Profile</a></li>';	
+?>
 
 <li class="leave">	<a href="index.php?logout=true">Leave</a></li>						 
   </ul>

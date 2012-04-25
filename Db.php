@@ -8,7 +8,7 @@ class Db
   protected function __construct($host="sql8.flk1.host-h.net", $user="munchadmin", $pass="SGVnQk28", $dbname="munchdb")
   {
     $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
-    $this->_pdo = new PDO('mysql:host=localhost;dbname=' . $dbname, $user, $pass, $pdo_options);
+    $this->_pdo = new PDO('mysql:host=' . $host.';dbname=' . $dbname, $user, $pass, $pdo_options);
   }
 
   
@@ -26,6 +26,13 @@ class Db
       {
 	die('Error: ' + $e->getMessage());
       }
+  }
+
+  public function updateField($field, $value, $id)
+  {
+    $query = $this->_pdo->prepare('UPDATE users SET '. $field .'=:field WHERE id=:id');
+    $query->execute(array(':field' => $value,
+			 ':id' => $id));
   }
 
   public function addBargain($data, $restaurant_id)
@@ -74,6 +81,13 @@ class Db
   {
     $query = $this->_pdo->prepare('SELECT id, admin FROM users WHERE id = ?');
     $query->execute(array($id));
+    return $query->fetch();
+  }
+
+  public function getFullUser($id)
+  {
+    $query = $this->_pdo->prepare('SELECT * FROM users WHERE id=:id');
+    $query->execute(array('id' => $id));
     return $query->fetch();
   }
 
