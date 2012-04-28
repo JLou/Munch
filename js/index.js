@@ -152,18 +152,23 @@
     //SLIDE DOWN FOR THE FORMS
     var slide = false;
     var slidelogin = false;
+    var addCoef = false;
+    var coefHeight = 1;
     $(".blockcontainer").hide();
     $("#homeforms h2").addClass("pointer");
     $(".blockcontainer, #loginform").addClass("hidden");
     $("#registercontainer h2").click(function() 
 			       {
-				   
+				   coefUpdated = false;
+				   $("#box_left, #box_right").fadeOut("50");
 				   if (slide)
 				   {
+				       coefHeight -= 2;
 				       $(".blockcontainer").slideToggle("200", function(){$(".blockcontainer").toggleClass("hidden");});
 				   } 
 				   else
 				   {
+				       coefHeight += 2;
 				       $(".blockcontainer").toggleClass("hidden");
 				       $(".blockcontainer").slideToggle("200");
 				   }
@@ -172,19 +177,52 @@
 				   slide = !slide;
 			       });
 
-    
     $("#loginform").hide();
     $("#logincontainer h2").click(function() 
 			       {
+				   coefUpdated = false;
+				   $("#box_left, #box_right").fadeOut("50");
 				   if (slidelogin)
+				   {
 			      	       $("#loginform").slideToggle("200", function(){$("#loginform").toggleClass("hidden");});
+				       coefHeight -= 2;
+				   }
 				   else
 				   {
+				       coefHeight += 2;
 				       $("#loginform").toggleClass("hidden");
 				       $("#loginform").slideToggle("200");
 				   }
 				  				   
 				   slidelogin = !slidelogin;
 			       });
+
+    var coefUpdated = true;
+    $("html").mousemove(function(e)
+		    {
+			var morelessY = "+=";
+			if (!coefUpdated)
+			{
+			    $("#box_left, #box_right").fadeIn();
+			}
+			else
+			{
+			    $("#box_left, #box_right").fadeIn();
+			}
+			var coef = coefHeight * 0.1;
+			var coefX = 0.1;
+			var newCssl = {
+			    'top' : coef * e.pageY,
+			    'left' : coefX * e.pageX
+			}
+			var newCssr = {
+			    'top' : coef * e.pageY,
+			    'right' : coefX * (e.pageX + 200)
+			}
+			$("#box_left").css(newCssl);
+			$("#box_right").css(newCssr);
+		    });
+
+    
     
 })();

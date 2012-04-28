@@ -17,6 +17,19 @@
 	</div>
       </fieldset>
     </form>
+    <div id="box_right">
+    <p>
+      saving ain't <br />
+      just a craving
+    </p>
+    </div>
+    <div id="box_left">
+      <p>
+	where budgeting <br />
+	means eating out
+      </p>
+    </div>
+
   </section>
   <section id="registercontainer">
     <h2>Register</h2>
@@ -28,11 +41,11 @@
     </div>
   <div class="clear"></div> 
   </section>
+    
   <div class="clear"></div>
 </div>
 </div>
 <script src="js/jquery.js"></script>
     <script src="js/register.js"></script>  
+<script src="js/jquery.mousedirection.js" type="text/javascript" charset="utf-8"></script>	    <script src="js/index.js"></script>
 
-    <script src="js/index.js"></script>
-	
