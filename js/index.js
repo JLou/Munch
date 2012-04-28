@@ -160,14 +160,16 @@
     $("#registercontainer h2").click(function() 
 			       {
 				   coefUpdated = false;
-				   $("#box_left, #box_right").fadeOut("50");
+				   
 				   if (slide)
 				   {
+				       $("#box_left, #box_right").fadeIn("50");
 				       coefHeight -= 2;
 				       $(".blockcontainer").slideToggle("200", function(){$(".blockcontainer").toggleClass("hidden");});
 				   } 
 				   else
 				   {
+				       $("#box_left, #box_right").fadeOut("50");
 				       coefHeight += 2;
 				       $(".blockcontainer").toggleClass("hidden");
 				       $(".blockcontainer").slideToggle("200");
@@ -181,14 +183,15 @@
     $("#logincontainer h2").click(function() 
 			       {
 				   coefUpdated = false;
-				   $("#box_left, #box_right").fadeOut("50");
 				   if (slidelogin)
 				   {
+				       $("#box_left, #box_right").fadeIn("50");
 			      	       $("#loginform").slideToggle("200", function(){$("#loginform").toggleClass("hidden");});
 				       coefHeight -= 2;
 				   }
 				   else
 				   {
+				       $("#box_left, #box_right").fadeOut("50");
 				       coefHeight += 2;
 				       $("#loginform").toggleClass("hidden");
 				       $("#loginform").slideToggle("200");
@@ -203,20 +206,21 @@
 			var morelessY = "+=";
 			if (!coefUpdated)
 			{
-			    $("#box_left, #box_right").fadeIn();
+//			    $("#box_left, #box_right").fadeIn();
 			}
 			else
 			{
-			    $("#box_left, #box_right").fadeIn();
+//			    $("#box_left, #box_right").fadeIn();
 			}
-			var coef = coefHeight * 0.1;
+			var coefl = coefHeight * 0.3;
+			var coefr = coefHeight * 0.1;
 			var coefX = 0.1;
 			var newCssl = {
-			    'top' : coef * e.pageY,
+			    'top' : coefl * e.pageY,
 			    'left' : coefX * e.pageX
 			}
 			var newCssr = {
-			    'top' : coef * e.pageY,
+			    'top' : coefr * e.pageY,
 			    'right' : coefX * (e.pageX + 200)
 			}
 			$("#box_left").css(newCssl);
