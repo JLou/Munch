@@ -27,7 +27,7 @@ if (isset($_GET['log']) && !isset($_SESSION['id'])) //session not created
     try
       {
 	$db = Db::getInstance();
-	$id = findUser($db, htmlspecialchars($_POST['emailogin']), htmlspecialchars($_POST['passwordlogin']));
+	$id = findUser($db, htmlspecialchars($_POST['emailogin']), $_POST['passwordlogin']);
 	if($id != -1)
 	  {
 	    $_SESSION['id'] = $id;
@@ -43,4 +43,3 @@ if (isset($_GET['log']) && !isset($_SESSION['id'])) //session not created
 	die('Error: ' + $e->getMessage());
       }
   }
-?>
