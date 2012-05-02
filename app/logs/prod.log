@@ -1,0 +1,1 @@
+[2012-04-23 12:51:18] request.ERROR: Symfony\Component\HttpKernel\Exception\NotFoundHttpException: No route found for "GET /" (uncaught exception) at /home/jlou/public_html/munchv2/symfony/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/EventListener/RouterListener.php line 83 [] []
